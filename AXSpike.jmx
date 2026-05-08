@@ -1,0 +1,1515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="AX Auction - Spike Test (100u Ramp60s Loop1)">
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="BASE_URL" elementType="Argument">
+            <stringProp name="Argument.name">BASE_URL</stringProp>
+            <stringProp name="Argument.value">api-gateway.ax-stg.lgq-stg.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="AUCTION_ID" elementType="Argument">
+            <stringProp name="Argument.name">AUCTION_ID</stringProp>
+            <stringProp name="Argument.value">c2aa752c-71df-4685-919c-001e4b5668c0</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="INVENTORY_ID" elementType="Argument">
+            <stringProp name="Argument.name">INVENTORY_ID</stringProp>
+            <stringProp name="Argument.value">46133def-fe4b-4416-9b57-82a7d3fa3be5</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="AUCTION_LANE" elementType="Argument">
+            <stringProp name="Argument.name">AUCTION_LANE</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="AUCTION_LOT" elementType="Argument">
+            <stringProp name="Argument.name">AUCTION_LOT</stringProp>
+            <stringProp name="Argument.value">1018</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <!-- USER_ID: diisi otomatis dari JWT decode di Phase 0 Login -->
+          <elementProp name="USER_ID" elementType="Argument">
+            <stringProp name="Argument.name">USER_ID</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <!-- NIPL: diisi dari kolom NIPL di CSV per user -->
+          <elementProp name="NIPL" elementType="Argument">
+            <stringProp name="Argument.name">NIPL</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="SELLER_ID" elementType="Argument">
+            <stringProp name="Argument.name">SELLER_ID</stringProp>
+            <stringProp name="Argument.value">90315450-4878-4e0b-9168-4dcd27888afe</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <!-- ROOM_ID = AUCTION_ID + AUCTION_LANE -->
+          <elementProp name="ROOM_ID" elementType="Argument">
+            <stringProp name="Argument.name">ROOM_ID</stringProp>
+            <stringProp name="Argument.value">c2aa752c-71df-4685-919c-001e4b5668c01</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="INCREMENT" elementType="Argument">
+            <stringProp name="Argument.name">INCREMENT</stringProp>
+            <stringProp name="Argument.value">5000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WS_HOST" elementType="Argument">
+            <stringProp name="Argument.name">WS_HOST</stringProp>
+            <stringProp name="Argument.value">socket.ax-stg.lgq-stg.com</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="WS_PORT" elementType="Argument">
+            <stringProp name="Argument.name">WS_PORT</stringProp>
+            <stringProp name="Argument.value">2005</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <!-- TOKEN: diisi otomatis dari Phase 0 Login (jangan diisi manual) -->
+          <elementProp name="TOKEN" elementType="Argument">
+            <stringProp name="Argument.name">TOKEN</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <!-- User profile — diisi otomatis dari JWT decode di Phase 0 Login -->
+          <elementProp name="CUSTOMER_NAME" elementType="Argument">
+            <stringProp name="Argument.name">CUSTOMER_NAME</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="CUSTOMER_EMAIL" elementType="Argument">
+            <stringProp name="Argument.name">CUSTOMER_EMAIL</stringProp>
+            <stringProp name="Argument.value"></stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="CUSTOMER_PHONE" elementType="Argument">
+            <stringProp name="Argument.name">CUSTOMER_PHONE</stringProp>
+            <stringProp name="Argument.value">66123123123</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <!-- AUCTION_DATE / MONTH / YEAR: digunakan di Phase 1 schedule & catalog -->
+          <elementProp name="AUCTION_DATE" elementType="Argument">
+            <stringProp name="Argument.name">AUCTION_DATE</stringProp>
+            <stringProp name="Argument.value">2026-04-28</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="AUCTION_MONTH" elementType="Argument">
+            <stringProp name="Argument.name">AUCTION_MONTH</stringProp>
+            <stringProp name="Argument.value">4</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="AUCTION_YEAR" elementType="Argument">
+            <stringProp name="Argument.name">AUCTION_YEAR</stringProp>
+            <stringProp name="Argument.value">2026</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </elementProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+    </TestPlan>
+    <hashTree>
+
+      <!-- HTTP Header Manager: untuk request HTTP -->
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Authorization</stringProp>
+            <stringProp name="Header.value">Bearer ${TOKEN}</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">Accept</stringProp>
+            <stringProp name="Header.value">application/json</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">lang</stringProp>
+            <stringProp name="Header.value">en</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">User-Agent</stringProp>
+            <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">origin</stringProp>
+            <stringProp name="Header.value">https://auction.ax-stg.lgq-stg.com</stringProp>
+          </elementProp>
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">referer</stringProp>
+            <stringProp name="Header.value">https://auction.ax-stg.lgq-stg.com/</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <!-- TG1: Pre-Login — login 50 user secara sequential, simpan token    -->
+      <!-- Jalan DULU sebelum TG2 (serialize_threadgroups=true)              -->
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="[TG1] Pre-Login - Generate 100 Tokens" enabled="true">
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController">
+          <stringProp name="LoopController.loops">100</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <!-- CSV Credentials khusus TG1 -->
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Credentials (TG1 only)" enabled="true">
+          <stringProp name="filename">C:\JMeter\AX\users_credentials.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">USERNAME,PASSWORD,CAPTCHA_KEY,NIPL</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="shareMode">shareMode.thread</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+
+        <!-- Init tokens.csv dengan header (hanya iterasi pertama) -->
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only - Init tokens.csv" enabled="true">
+        </OnceOnlyController>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Init tokens.csv" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+def tokenFile = new File("C:/JMeter/AX/tokens.csv")
+tokenFile.text = "USERNAME,TOKEN,USER_ID,NIPL\n"
+log.info("tokens.csv initialized")
+            </stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Delay antar login iteration agar tidak rate-limited -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="TG1 Login Delay - 200ms" enabled="true">
+          <stringProp name="ConstantTimer.delay">200</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+
+        <!-- Login HTTP -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="[TG1] POST Login" enabled="true">
+          <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/membership/signin</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{"username":"${USERNAME}","password":"${PASSWORD}","captcha_key":"${CAPTCHA_KEY}","remember_me":false}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="[TG1] Login Headers">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">origin</stringProp>
+                <stringProp name="Header.value">https://auction.ax-stg.lgq-stg.com</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="[TG1] Extract TOKEN">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">TOKEN</stringProp>
+            <stringProp name="RegexExtractor.regex">"access_token"\s*:\s*"([^"]+)"</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">TOKEN_NOT_FOUND</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="[TG1] Decode JWT and Write to tokens.csv" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonSlurper
+import java.util.Base64
+
+def token = vars.get("TOKEN")
+def username = vars.get("USERNAME")
+def nipl = vars.get("NIPL") ?: ""
+
+if (token != null &amp;&amp; token != "TOKEN_NOT_FOUND" &amp;&amp; token.contains(".")) {
+    try {
+        def parts = token.tokenize('.')
+        def payload = new String(Base64.getUrlDecoder().decode(parts[1]))
+        def json = new JsonSlurper().parseText(payload)
+        def userId = json.sub as String
+
+        new File("C:/JMeter/AX/tokens.csv").append("${username},${token},${userId},${nipl}\n")
+        log.info("[TG1] Token saved: " + username + " | USER_ID: " + userId)
+    } catch (Exception e) {
+        log.error("[TG1] Gagal decode JWT untuk: " + username + " | " + e.getMessage())
+    }
+} else {
+    log.warn("[TG1] Login GAGAL atau token tidak ditemukan untuk: " + username)
+}
+            </stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <!-- TG2: Bid Loop — 50 user, ramp 100s, loop 5x                       -->
+      <!-- Setiap user melakukan full bid cycle sebanyak 5 kali              -->
+      <!-- Phase 1 (HTTP setup) hanya 1x via OnceOnly                       -->
+      <!-- Phase 2 (WS bid cycle) repeat 5x per user                        -->
+      <!-- ═══════════════════════════════════════════════════════════════════ -->
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="[TEST] Spike - 100u Ramp60s Loop1" enabled="true">
+        <stringProp name="ThreadGroup.num_threads">100</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController">
+          <stringProp name="LoopController.loops">1</stringProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+
+        <!-- TG2: Baca TOKEN, USER_ID, NIPL dari tokens.csv hasil TG1 -->
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Tokens (dari TG1 Pre-Login)" enabled="true">
+          <stringProp name="filename">C:\JMeter\AX\tokens.csv</stringProp>
+          <stringProp name="fileEncoding">UTF-8</stringProp>
+          <stringProp name="variableNames">USERNAME,TOKEN,USER_ID,NIPL</stringProp>
+          <boolProp name="ignoreFirstLine">true</boolProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="shareMode">shareMode.thread</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <!--  PHASE 1: Join Auction HTTP Flow — hanya jalan 1x         -->
+        <!--  Iterasi 2-5 langsung ke Phase 2 (bid) tanpa reload page  -->
+        <!-- ═══════════════════════════════════════════════════════════ -->
+        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only - Phase 1 HTTP (1x per thread)" enabled="true">
+        </OnceOnlyController>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Phase 1 Pacing - 200ms" enabled="true">
+            <stringProp name="ConstantTimer.delay">200</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+
+          <!-- 1a. List Translation EN -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1a. GET List Translation (EN)" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/frontsite/list-translation</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="source" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">source</stringProp>
+                  <stringProp name="Argument.value">auction</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="lang" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">lang</stringProp>
+                  <stringProp name="Argument.value">en</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1b. List Translation TH -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1b. GET List Translation (TH)" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/frontsite/list-translation</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="source" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">source</stringProp>
+                  <stringProp name="Argument.value">auction</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="lang" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">lang</stringProp>
+                  <stringProp name="Argument.value">th</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1c. Get reminder list -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1c. GET Remind Me List" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/auction/get-remind-me</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="limit" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">limit</stringProp>
+                  <stringProp name="Argument.value">999</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1d. Get vehicle image -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1d. GET Vehicle Image" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/auction/vehicle-image</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="inventory_id" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">inventory_id</stringProp>
+                  <stringProp name="Argument.value">${INVENTORY_ID}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1e. Get customers interested -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1e. GET Customers Interested" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/auction/get-customers-interested/${AUCTION_ID}/${AUCTION_LANE}/${AUCTION_LOT}/${USER_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1f. Get vehicle image batch -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1f. GET Vehicle Image Batch" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/auction/vehicle-image/batch</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="inventory_ids" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">inventory_ids</stringProp>
+                  <stringProp name="Argument.value">20524df5-c739-4c19-b281-5e843e603de4,d3294c4f-f9fa-428e-9985-23444349f437,b4d108c1-27e5-467c-8fb0-cd2be52e5c75,3180cf15-babe-4b19-85c3-846f7760ea92,31cbf556-e713-48e8-80c8-1d9b95634ec2</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1g. Get vehicle document -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1g. GET Vehicle Document" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/auction/vehicle-document</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="inventory_id" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">inventory_id</stringProp>
+                  <stringProp name="Argument.value">${INVENTORY_ID}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1h. Get auction list -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1h. GET Auction List" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/auction/auction-list/${AUCTION_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1i. Get chat history room -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1i. GET Customer History Chat" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/auction/customer-history-chat</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="room" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">room</stringProp>
+                  <stringProp name="Argument.value">${ROOM_ID}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="inventory_id" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">inventory_id</stringProp>
+                  <stringProp name="Argument.value">${INVENTORY_ID}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1j. GET /membership/me -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1j. GET Membership Me" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/membership/me</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <!-- Extract CUSTOMER_NAME dari /membership/me response -->
+            <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract CUSTOMER_NAME from /me" enabled="true">
+              <stringProp name="scriptLanguage">groovy</stringProp>
+              <stringProp name="script">
+import groovy.json.JsonSlurper
+def body = prev.getResponseDataAsString()
+try {
+    def json = new JsonSlurper().parseText(body)
+    def data = json.data
+    if (data?.full_name) {
+        vars.put("CUSTOMER_NAME", data.full_name as String)
+        vars.put("CUSTOMER_EMAIL", data.email as String ?: vars.get("USERNAME"))
+        log.info("[Phase1] CUSTOMER_NAME: " + data.full_name + " | EMAIL: " + data.email)
+    }
+} catch (Exception e) {
+    log.warn("[Phase1] Gagal parse /membership/me: " + e.getMessage())
+}
+              </stringProp>
+            </JSR223PostProcessor>
+            <hashTree/>
+          </hashTree>
+
+          <!-- 1k. GET /auction/notifications -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1k. GET Auction Notifications" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/auction/notifications</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="limit" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">limit</stringProp>
+                  <stringProp name="Argument.value">20</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1l. GET /frontsite/terms-and-conditions -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1l. GET Terms and Conditions" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/frontsite/terms-and-conditions</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1m. GET /frontsite/auction-schedule/membership?month&year -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1m. GET Auction Schedule (month)" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/frontsite/auction-schedule/membership</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="month" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">month</stringProp>
+                  <stringProp name="Argument.value">${AUCTION_MONTH}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="year" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">year</stringProp>
+                  <stringProp name="Argument.value">${AUCTION_YEAR}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1n. GET /frontsite/auction-schedule/membership?auction_date -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1n. GET Auction Schedule (date filter)" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/frontsite/auction-schedule/membership</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="auction_date" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">auction_date</stringProp>
+                  <stringProp name="Argument.value">${AUCTION_DATE}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="finished_conductor" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">finished_conductor</stringProp>
+                  <stringProp name="Argument.value">false</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1o. GET /frontsite/catalog/membership -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1o. GET Catalog Membership (list)" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/frontsite/catalog/membership</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="auction_date" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">auction_date</stringProp>
+                  <stringProp name="Argument.value">${AUCTION_DATE}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1p. GET /frontsite/catalog/membership/{auction_id} -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1p. GET Catalog Membership (detail)" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/frontsite/catalog/membership/${AUCTION_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="page" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">page</stringProp>
+                  <stringProp name="Argument.value">1</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="limit" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">limit</stringProp>
+                  <stringProp name="Argument.value">10</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="direction" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">direction</stringProp>
+                  <stringProp name="Argument.value">lot_number</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="order" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">order</stringProp>
+                  <stringProp name="Argument.value">asc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="is_publish_catalog" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">is_publish_catalog</stringProp>
+                  <stringProp name="Argument.value">true</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="auction_date" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">auction_date</stringProp>
+                  <stringProp name="Argument.value">${AUCTION_DATE}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1q. GET /frontsite/catalog/membership/location -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1q. GET Catalog Membership Location" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/frontsite/catalog/membership/location</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="auction_date" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">auction_date</stringProp>
+                  <stringProp name="Argument.value">${AUCTION_DATE}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1r. GET /frontsite/catalog/list/{auction_id} -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1r. GET Catalog List (lots)" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/frontsite/catalog/list/${AUCTION_ID}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="page" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">page</stringProp>
+                  <stringProp name="Argument.value">1</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="limit" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">limit</stringProp>
+                  <stringProp name="Argument.value">10</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="direction" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">direction</stringProp>
+                  <stringProp name="Argument.value">lot_number</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="order" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">order</stringProp>
+                  <stringProp name="Argument.value">asc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+          <!-- 1s. GET /frontsite/option/car-brands -->
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="1s. GET Car Brands" enabled="true">
+            <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.path">/frontsite/option/car-brands</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="direction" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">direction</stringProp>
+                  <stringProp name="Argument.value">brand_name_en</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="order" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">order</stringProp>
+                  <stringProp name="Argument.value">asc</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+                <elementProp name="limit" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.name">limit</stringProp>
+                  <stringProp name="Argument.value">999</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                  <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+
+        </hashTree>
+        <!-- end Once Only - Phase 1 -->
+
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!--  LOOP PACING: jeda antar iterasi bid                              -->
+        <!--  Iterasi 1: langsung bid (no sleep)                               -->
+        <!--  Iterasi 2-5: sleep 1500ms agar tidak terlalu cepat               -->
+        <!--  Tujuan: mensimulasikan jeda realistis user antara satu bid       -->
+        <!--          ke bid berikutnya (~1.5 detik think time)                -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="[Spike] Inter-Iteration Pacing &amp; Log" enabled="true">
+          <stringProp name="scriptLanguage">groovy</stringProp>
+          <stringProp name="script">
+def loopNum = vars.getIteration()
+def threadNum = ctx.getThreadNum() + 1
+
+log.info("════════════════════════════════════════════")
+log.info("=== SPIKE ITERATION: " + loopNum + "/5 | Thread: " + threadNum + " | User: " + vars.get("USERNAME") + " ===")
+log.info("════════════════════════════════════════════")
+
+// Skip pacing pada iterasi pertama — langsung bid
+if (loopNum > 1) {
+    Thread.sleep(1500) // 1.5s think time antar bid
+}
+
+// Set label agar terlihat di result
+vars.put("CURRENT_LOOP", loopNum.toString())
+prev.setSampleLabel("[BidLoop] Iter-" + loopNum + " Pacing")
+          </stringProp>
+        </JSR223Sampler>
+        <hashTree/>
+
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!--  PHASE 2: WebSocket Bidding Flow — repeat setiap loop             -->
+        <!--  Setiap iterasi: buka WS baru, fetch state terkini, bid, tutup   -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+        <!-- STEP 2a: Get current auction state — ambil last bid ID dan harga terkini -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2a. GET Current Auction State (History Bid)" enabled="true">
+          <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/auction/customer-history-bid</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="auction_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">auction_id</stringProp>
+                <stringProp name="Argument.value">${AUCTION_ID}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="inventory_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">inventory_id</stringProp>
+                <stringProp name="Argument.value">${INVENTORY_ID}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="auction_lane" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">auction_lane</stringProp>
+                <stringProp name="Argument.value">${AUCTION_LANE}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="auction_lot" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">auction_lot</stringProp>
+                <stringProp name="Argument.value">${AUCTION_LOT}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract &amp; Adjust bid state from History JSON" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonSlurper
+
+def responseBody = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(responseBody)
+def data = json.data
+
+def firstBid = data.find { it.last_price != null &amp;&amp; it.last_price instanceof Number }
+
+if (firstBid) {
+    def historyId = firstBid._id as String
+    def currentPrice = firstBid.last_price as int
+
+    def prefix = historyId.substring(0, 22)
+    def lastByte = Integer.parseInt(historyId.substring(22, 24), 16)
+    def wsId = prefix + String.format("%02x", lastByte - 2)
+
+    vars.put("PARENT_BID_ID", wsId)
+    vars.put("CURRENT_PRICE", currentPrice.toString())
+
+    log.info("=== Auction State (Iter " + vars.get("CURRENT_LOOP") + ") ===")
+    log.info("PARENT_BID_ID (adjusted): " + historyId + " -> " + wsId)
+    log.info("CURRENT_PRICE: " + currentPrice)
+} else {
+    log.warn("Tidak ada entry bid valid di history response!")
+    vars.put("PARENT_BID_ID", "PARENT_BID_ID_NOT_FOUND")
+    vars.put("CURRENT_PRICE", "0")
+}
+            </stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+
+        <!-- STEP 2b: Buka koneksi WebSocket baru tiap iterasi -->
+        <!-- Server tutup koneksi setelah countdown — iterasi baru buka koneksi baru -->
+        <eu.luminis.jmeter.wssampler.OpenWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.OpenWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.OpenWebSocketSampler" testname="2b. WebSocket Open Connection" enabled="true">
+          <boolProp name="TLS">true</boolProp>
+          <stringProp name="server">${WS_HOST}</stringProp>
+          <stringProp name="port">${WS_PORT}</stringProp>
+          <stringProp name="path">socket.io/?EIO=4&amp;transport=websocket</stringProp>
+          <stringProp name="connectTimeout">10000</stringProp>
+          <stringProp name="readTimeout">6000</stringProp>
+        </eu.luminis.jmeter.wssampler.OpenWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2c: Baca EIO OPEN dari server -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2c. WebSocket Read - EIO Open (0{...})" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">10000</stringProp>
+          <boolProp name="optional">false</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2d: Kirim "40" — Socket.IO Namespace Connect -->
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2d. WebSocket Write - SIO Namespace Connect (40)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="dataType">Text</stringProp>
+          <stringProp name="requestData">40</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2e: Baca konfirmasi namespace connect -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2e. WebSocket Read - SIO Namespace Confirm (40)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">10000</stringProp>
+          <boolProp name="optional">true</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2e1: Check Latest Vehicle (420) -->
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2e1. WebSocket Write - Check Latest Vehicle Windowed (420)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="dataType">Text</stringProp>
+          <stringProp name="requestData">420["check-latest-vehicle-windowed",{"headers":{"headers":{"Authorization":"Bearer ${TOKEN}","lang":"en"}},"payload":{"auction_id":"${AUCTION_ID}","auction_lane":"${AUCTION_LANE}","limit":999,"offset":0}}]</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2e2: Baca response check-latest-vehicle-windowed (430) -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2e2. WebSocket Read - Check Latest Vehicle Windowed Response (430)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">8000</stringProp>
+          <boolProp name="optional">true</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2f: Join Room (421) -->
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2f. WebSocket Write - Join Room (421)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="dataType">Text</stringProp>
+          <stringProp name="requestData">421["join",{"headers":{"headers":{"Authorization":"Bearer ${TOKEN}","lang":"en"}},"payload":{"auction_id":"${AUCTION_ID}","auction_lane":"${AUCTION_LANE}","auction_lot":"${AUCTION_LOT}","source":"https://auction.ax-stg.lgq-stg.com/auction/detail?id=${AUCTION_ID}-${AUCTION_LANE}&amp;showMultiple=false","customer_id":"${NIPL}","customer_name":"${CUSTOMER_NAME}","email":"${CUSTOMER_EMAIL}","telphone":"${CUSTOMER_PHONE}","customer_type":"Seller &amp; Buyer","customer_category":"Logique user","customer_status":null,"province":"Bangkok","registered_date":"2024-02-28T17:00:00.000Z","registered_status":"registered"}}]</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2g: Baca konfirmasi join (431) -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2g. WebSocket Read - Join Confirm (431)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">8000</stringProp>
+          <boolProp name="optional">false</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert Join Confirm - connected">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">connected join in room</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message">Join room GAGAL - user tidak berhasil masuk ke ruang auction</stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+
+        <!-- STEP 2g1: theping setelah join -->
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2g1. WebSocket Write - theping (after join)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="dataType">Text</stringProp>
+          <stringProp name="requestData">42["theping",{"date":${__time()}}]</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2g2: Baca thepong -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2g2. WebSocket Read - thepong (after join)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">5000</stringProp>
+          <boolProp name="optional">true</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2h: Check Latest (422) — ambil state bid terkini via WS -->
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2h. WebSocket Write - Check Latest (422)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="dataType">Text</stringProp>
+          <stringProp name="requestData">422["check-latest",{"headers":{"headers":{"Authorization":"Bearer ${TOKEN}","lang":"en"}},"payload":{"auction_id":"${AUCTION_ID}","auction_lane":"${AUCTION_LANE}","auction_lot":"${AUCTION_LOT}","inventory_id":"${INVENTORY_ID}"}}]</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2i: Baca response check-latest (432) -->
+        <!-- Extract: PARENT_BID_ID = _id (direct, tanpa -2) dan CURRENT_PRICE = last_price -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2i. WebSocket Read - Check Latest Response (432)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">8000</stringProp>
+          <boolProp name="optional">false</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract bid state from check-latest (authoritative)" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonSlurper
+
+def body = prev.getResponseDataAsString()
+log.info("=== check-latest Response (Iter " + vars.get("CURRENT_LOOP") + ") ===")
+log.info(body)
+
+if (!body.startsWith("432")) {
+    log.warn("check-latest: dapat non-ACK message, skip parsing. body=" + body.take(80))
+    return
+}
+
+def jsonStr = body.replaceFirst('^\\d+', '')
+def arr = new JsonSlurper().parseText(jsonStr)
+def obj = arr[0]
+
+if (!(obj instanceof Map) || obj?.data == null) {
+    log.warn("check-latest: format tidak dikenali atau data null! body=" + body)
+    return
+}
+
+def data = obj.data
+def eventId   = data._id as String
+def lastPrice = data.last_price as int
+def nextPrice = data.next_price
+
+vars.put("PARENT_BID_ID", eventId)
+vars.put("CURRENT_PRICE", lastPrice.toString())
+
+log.info("=== Bid state dari check-latest (Iter " + vars.get("CURRENT_LOOP") + ") ===")
+log.info("PARENT_BID_ID: " + eventId)
+log.info("CURRENT_PRICE: " + lastPrice)
+log.info("next_price (info): " + nextPrice)
+log.info("BID akan dikirim: " + (lastPrice + (vars.get("INCREMENT") as int)))
+            </stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+
+        <!-- STEP 2i1: theping sebelum bid -->
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2i1. WebSocket Write - theping (before bid)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="dataType">Text</stringProp>
+          <stringProp name="requestData">42["theping",{"date":${__time()}}]</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2i2: Baca thepong -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2i2. WebSocket Read - thepong (before bid)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">5000</stringProp>
+          <boolProp name="optional">true</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2j: HTTP Bidding Validation -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2j. GET Bidding Validation" enabled="true">
+          <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/auction/bidding-validation</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="auction_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">auction_id</stringProp>
+                <stringProp name="Argument.value">${AUCTION_ID}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="auction_lane" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">auction_lane</stringProp>
+                <stringProp name="Argument.value">${AUCTION_LANE}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="auction_lot" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">auction_lot</stringProp>
+                <stringProp name="Argument.value">${AUCTION_LOT}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert Bidding Validation - HTTP 200">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message">Bidding Validation GAGAL - token expired atau user tidak berhak bid</stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Override CURRENT_PRICE from Bidding Validation" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonSlurper
+
+def responseBody = prev.getResponseDataAsString()
+log.info("=== Bidding Validation (Iter " + vars.get("CURRENT_LOOP") + ") ===")
+log.info(responseBody)
+
+def json = new JsonSlurper().parseText(responseBody)
+def data = json.data
+
+// PARENT_BID_ID sudah di-set dari check-latest (2h), tidak di-override di sini
+// Override CURRENT_PRICE dari next_price (server authoritative)
+def nextPrice = data?.next_price
+if (nextPrice != null &amp;&amp; nextPrice instanceof Number &amp;&amp; (nextPrice as int) > 0) {
+    vars.put("CURRENT_PRICE", (nextPrice as int).toString())
+    log.info("CURRENT_PRICE overridden by next_price: " + nextPrice)
+} else {
+    log.info("next_price tidak tersedia, CURRENT_PRICE tetap dari check-latest: " + vars.get("CURRENT_PRICE"))
+}
+
+log.info("=== Bid akan dikirim (Iter " + vars.get("CURRENT_LOOP") + ") ===")
+log.info("current_price: " + vars.get("CURRENT_PRICE"))
+def cp = vars.get("CURRENT_PRICE") as int
+def inc = vars.get("INCREMENT") as int
+log.info("last_price (bid): " + (cp + inc))
+log.info("parent_bid_id: " + vars.get("PARENT_BID_ID"))
+            </stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+
+        <!-- STEP 2j-fresh: GET Fresh Price (pre-bid) -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2j-fresh. GET Fresh Price (pre-bid)" enabled="true">
+          <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/auction/customer-history-bid</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="auction_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">auction_id</stringProp>
+                <stringProp name="Argument.value">${AUCTION_ID}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="inventory_id" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">inventory_id</stringProp>
+                <stringProp name="Argument.value">${INVENTORY_ID}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="auction_lane" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">auction_lane</stringProp>
+                <stringProp name="Argument.value">${AUCTION_LANE}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="auction_lot" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">auction_lot</stringProp>
+                <stringProp name="Argument.value">${AUCTION_LOT}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Refresh CURRENT_PRICE from fresh history-bid" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonSlurper
+
+def responseBody = prev.getResponseDataAsString()
+def json = new JsonSlurper().parseText(responseBody)
+def data = json.data
+
+def firstBid = data.find { it.last_price != null &amp;&amp; it.last_price instanceof Number }
+
+if (firstBid) {
+    def freshPrice = firstBid.last_price as int
+    def oldPrice = vars.get("CURRENT_PRICE")
+    vars.put("CURRENT_PRICE", freshPrice.toString())
+    log.info("=== Fresh Price (Iter " + vars.get("CURRENT_LOOP") + ") ===")
+    log.info("CURRENT_PRICE updated: " + oldPrice + " -> " + freshPrice)
+    log.info("BID akan dikirim: " + (freshPrice + (vars.get("INCREMENT") as int)))
+} else {
+    log.warn("2j-fresh: tidak ada entry valid, CURRENT_PRICE tetap: " + vars.get("CURRENT_PRICE"))
+}
+            </stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <!--  STEP 2k: Kirim bid via WebSocket (423)                           -->
+        <!--  current_price = last_price dari check-latest                    -->
+        <!--  last_price    = current_price + increment                        -->
+        <!--  parent_bid_id = _id dari check-latest (langsung, tanpa -2)      -->
+        <!-- ═══════════════════════════════════════════════════════════════════ -->
+        <eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler" testname="2k. WebSocket Write - Customer Bid (423)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="dataType">Text</stringProp>
+          <stringProp name="requestData">423["customer-bidding",{"headers":{"headers":{"Authorization":"Bearer ${TOKEN}","lang":"en"}},"payload":{"auction_id":"${AUCTION_ID}","auction_lane":"${AUCTION_LANE}","room_id":"${ROOM_ID}","auction_lot":"${AUCTION_LOT}","bidtype":"web","nipl":"${NIPL}","increment":${INCREMENT},"reserved_price":0,"inventory_id":"${INVENTORY_ID}","current_price":${CURRENT_PRICE},"last_price":${__intSum(${CURRENT_PRICE},${INCREMENT},)},"parent_bid_id":"${PARENT_BID_ID}","seller_id":"${SELLER_ID}"}}]</stringProp>
+        </eu.luminis.jmeter.wssampler.SingleWriteWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2l: Broadcast 1 — bid-lock (optional) -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2l. WebSocket Read - Broadcast 1 (bid-lock)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">5000</stringProp>
+          <boolProp name="optional">true</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2m: Broadcast 2 — bidding info -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2m. WebSocket Read - Broadcast 2 (bidding)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">5000</stringProp>
+          <boolProp name="optional">true</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2n: Broadcast 3 — bid-unlock -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2n. WebSocket Read - Broadcast 3 (bid-unlock)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">5000</stringProp>
+          <boolProp name="optional">true</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
+
+        <!-- STEP 2o: Baca Bid ACK (433) -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2o. WebSocket Read - Bid ACK (433)" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="connectTimeout">20000</stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">8000</stringProp>
+          <boolProp name="optional">true</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert Bid ACK - status:true" enabled="false">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">status&quot;:true</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message">Bid ACK tidak mengandung status:true</stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+
+        <!-- STEP 2p: Baca countdown broadcast -->
+        <eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler guiclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSamplerGui" testclass="eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler" testname="2p. WebSocket Read - Countdown broadcast" enabled="true">
+          <boolProp name="TLS">false</boolProp>
+          <stringProp name="server"></stringProp>
+          <stringProp name="port">80</stringProp>
+          <stringProp name="path"></stringProp>
+          <stringProp name="dataType">Text</stringProp>
+          <boolProp name="createNewConnection">false</boolProp>
+          <stringProp name="readTimeout">5000</stringProp>
+          <boolProp name="optional">true</boolProp>
+        </eu.luminis.jmeter.wssampler.SingleReadWebSocketSampler>
+        <hashTree/>
+
+        <!-- Result Collectors -->
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">C:/JMeter/AX/results_spike_${__time(yyyyMMdd_HHmmss)}.jtl</stringProp>
+        </ResultCollector>
+        <hashTree/>
+
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>true</responseData>
+              <samplerData>true</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>true</responseHeaders>
+              <requestHeaders>true</requestHeaders>
+              <responseDataOnError>true</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

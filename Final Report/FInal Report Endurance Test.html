@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Endurance Test Report — AX Auction Platform</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f6fa; color: #2d3436; line-height: 1.6; }
+
+    .header { background: linear-gradient(135deg, #1e3a5f 0%, #2d6a9f 100%); color: white; padding: 40px; }
+    .header h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    .header .subtitle { font-size: 14px; opacity: 0.85; }
+    .header .meta { margin-top: 20px; display: flex; gap: 32px; flex-wrap: wrap; }
+    .header .meta-item { font-size: 13px; }
+    .header .meta-item span { opacity: 0.7; display: block; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+
+    .section { background: white; border-radius: 8px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .section h2 { font-size: 17px; font-weight: 700; color: #1e3a5f; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #e8f0fe; }
+    .section h3 { font-size: 14px; font-weight: 600; color: #2d3436; margin: 20px 0 12px; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { background: #f0f4ff; color: #1e3a5f; font-weight: 600; text-align: left; padding: 10px 12px; border-bottom: 2px solid #d0dcf5; }
+    td { padding: 9px 12px; border-bottom: 1px solid #f0f0f0; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #fafbff; }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+    .highlight-red td { background: #fff5f5 !important; }
+    .highlight-red td:first-child { border-left: 3px solid #e74c3c; }
+    .highlight-yellow td { background: #fffbf0 !important; }
+    .highlight-yellow td:first-child { border-left: 3px solid #f39c12; }
+    .highlight-green td { background: #f0fff4 !important; }
+    .highlight-green td:first-child { border-left: 3px solid #27ae60; }
+
+    .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .summary-card { background: #f8f9ff; border-radius: 8px; padding: 16px; text-align: center; border: 1px solid #e8eeff; }
+    .summary-card .value { font-size: 22px; font-weight: 700; color: #1e3a5f; }
+    .summary-card .label { font-size: 11px; color: #636e72; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+    .summary-card.success .value { color: #27ae60; }
+    .summary-card.warning .value { color: #f39c12; }
+    .summary-card.danger .value { color: #e74c3c; }
+
+    .callout { border-radius: 6px; padding: 14px 16px; margin: 16px 0; font-size: 13px; line-height: 1.6; }
+    .callout-red { background: #fff5f5; border-left: 4px solid #e74c3c; }
+    .callout-yellow { background: #fffbf0; border-left: 4px solid #f39c12; }
+    .callout-green { background: #f0fff4; border-left: 4px solid #27ae60; }
+    .callout-blue { background: #f0f8ff; border-left: 4px solid #2d6a9f; }
+    .callout strong { display: block; margin-bottom: 4px; }
+
+    .trend-table td.up { color: #e74c3c; font-weight: 600; }
+    .trend-table td.slow { color: #f39c12; font-weight: 600; }
+    .trend-table td.plateau { color: #27ae60; font-weight: 600; }
+
+    .verdict-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .verdict-card { border-radius: 8px; padding: 16px; border: 1px solid #e0e0e0; }
+    .verdict-card .aspect { font-size: 12px; font-weight: 600; color: #636e72; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .verdict-card .status { font-size: 18px; margin-bottom: 6px; }
+    .verdict-card .note { font-size: 12px; color: #636e72; }
+    .verdict-card.pass { background: #f0fff4; border-color: #a8e6c1; }
+    .verdict-card.fail { background: #fff5f5; border-color: #f5c6cb; }
+    .verdict-card.warn { background: #fffbf0; border-color: #ffd97d; }
+
+    .footer { text-align: center; color: #b2bec3; font-size: 12px; padding: 32px 0 48px; }
+
+    @media (max-width: 600px) {
+      .header { padding: 24px 20px; }
+      .container { padding: 16px; }
+      .section { padding: 20px 16px; }
+      .summary-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Endurance Test Report</h1>
+  <div class="subtitle">AX Auction Platform — Staging Environment</div>
+  <div class="meta">
+    <div class="meta-item"><span>Tanggal</span>7 Mei 2026</div>
+    <div class="meta-item"><span>Skenario</span>100u Ramp 200s, 30 Menit</div>
+    <div class="meta-item"><span>Periode</span>18:39 – 19:10 WIB</div>
+    <div class="meta-item"><span>Environment</span>api-gateway.ax-stg.lgq-stg.com</div>
+    <div class="meta-item"><span>Tool</span>Apache JMeter 5.x</div>
+    <div class="meta-item"><span>Prepared by</span>QA / Performance Engineering</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- SECTION 1: Objective -->
+  <div class="section">
+    <h2>📋 Objective</h2>
+    <p style="font-size:13px;color:#555;margin-bottom:16px;">
+      Menguji ketahanan sistem AX Auction pada kondisi <em>sustained load</em> selama <strong>30 menit</strong>
+      dengan <strong>100 concurrent users</strong> — mensimulasikan sesi auction aktif yang berlangsung dalam
+      jangka waktu panjang.
+    </p>
+    <h3>Konfigurasi Test</h3>
+    <table>
+      <thead><tr><th>Parameter</th><th>Nilai</th></tr></thead>
+      <tbody>
+        <tr><td>Concurrent Users</td><td><strong>100 users</strong></td></tr>
+        <tr><td>Ramp-up Time</td><td><strong>200 detik</strong></td></tr>
+        <tr><td>Durasi</td><td><strong>30 menit</strong> (scheduler-based)</td></tr>
+        <tr><td>Total Duration Aktual</td><td>30 menit 59 detik</td></tr>
+        <tr><td>WebSocket Event</td><td>check-latest-vehicle-windowed (post-enhancement)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 2: Summary -->
+  <div class="section">
+    <h2>📊 Ringkasan Hasil</h2>
+
+    <div class="summary-grid">
+      <div class="summary-card">
+        <div class="value">83,909</div>
+        <div class="label">Total Requests</div>
+      </div>
+      <div class="summary-card">
+        <div class="value">45.1/s</div>
+        <div class="label">Throughput</div>
+      </div>
+      <div class="summary-card">
+        <div class="value">2,033 ms</div>
+        <div class="label">Avg Response</div>
+      </div>
+      <div class="summary-card">
+        <div class="value">94,076 ms</div>
+        <div class="label">Max Response</div>
+      </div>
+      <div class="summary-card warning">
+        <div class="value">36 (0.04%)</div>
+        <div class="label">Total Error</div>
+      </div>
+      <div class="summary-card success">
+        <div class="value">Menit 21+</div>
+        <div class="label">0 Error (recovery)</div>
+      </div>
+    </div>
+
+    <h3>Tren Response Time (Avg Kumulatif)</h3>
+    <table class="trend-table">
+      <thead>
+        <tr><th>Waktu</th><th class="num">Avg</th><th class="num">Delta</th><th>Keterangan</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>06:39</td><td class="num">1,318 ms</td><td class="num">—</td><td>Ramp-up selesai, full load</td></tr>
+        <tr><td>08:39</td><td class="num">1,529 ms</td><td class="num up">+211 ms</td><td>Degradasi awal</td></tr>
+        <tr><td>10:39</td><td class="num">1,657 ms</td><td class="num up">+128 ms</td><td>DB accumulation mulai terasa</td></tr>
+        <tr><td>12:39</td><td class="num">1,742 ms</td><td class="num slow">+85 ms</td><td>Laju melambat</td></tr>
+        <tr><td>14:39</td><td class="num">1,814 ms</td><td class="num slow">+72 ms</td><td>Laju makin lambat</td></tr>
+        <tr><td>16:39</td><td class="num">1,857 ms</td><td class="num slow">+43 ms</td><td>Mendekati plateau</td></tr>
+        <tr><td>18:39</td><td class="num">1,878 ms</td><td class="num plateau">+21 ms</td><td>Hampir plateau</td></tr>
+        <tr><td>20:39</td><td class="num">1,901 ms</td><td class="num plateau">+23 ms</td><td>Plateau tercapai ~1,900ms</td></tr>
+        <tr><td>26:39</td><td class="num">1,956 ms</td><td class="num plateau">+55 ms</td><td>Flat, stabil</td></tr>
+        <tr><td>30:59</td><td class="num"><strong>2,033 ms</strong></td><td class="num plateau">+77 ms</td><td>Final</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 3: Per Endpoint -->
+  <div class="section">
+    <h2>🔍 Hasil Per Endpoint</h2>
+    <table>
+      <thead>
+        <tr><th>Endpoint</th><th class="num">Count</th><th class="num">Avg</th><th class="num">Max</th><th class="num">Error</th></tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="5" style="background:#f8f8f8;font-weight:600;font-size:12px;color:#888;padding:8px 12px;">PHASE 1 — Setup (1x per user)</td></tr>
+        <tr><td>1a. GET List Translation (EN)</td><td class="num">100</td><td class="num">1,001 ms</td><td class="num">7,108 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+        <tr><td>1b. GET List Translation (TH)</td><td class="num">100</td><td class="num">691 ms</td><td class="num">4,316 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+        <tr><td>1c–1j. GET Various Endpoints</td><td class="num">800</td><td class="num">&lt;200 ms</td><td class="num">1,102 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+        <tr><td>1k. GET Auction Notifications</td><td class="num">100</td><td class="num">406 ms</td><td class="num">2,088 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+        <tr class="highlight-yellow"><td>1l. GET Terms and Conditions</td><td class="num">100</td><td class="num">1,707 ms</td><td class="num">9,054 ms</td><td class="num" style="color:#27ae60">0 ⚠️</td></tr>
+        <tr><td>1m–1q. GET Schedule &amp; Catalog</td><td class="num">500</td><td class="num">&lt;200 ms</td><td class="num">2,804 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+        <tr><td>1r. GET Catalog List (lots)</td><td class="num">100</td><td class="num">890 ms</td><td class="num">5,669 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+        <tr><td>1s. GET Car Brands</td><td class="num">100</td><td class="num">173 ms</td><td class="num">415 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+
+        <tr><td colspan="5" style="background:#f0f4ff;font-weight:600;font-size:12px;color:#1e3a5f;padding:8px 12px;">PHASE 2 — Bid Core (per iterasi, ~3,400+ iterasi)</td></tr>
+        <tr class="highlight-red"><td><strong>2a. GET History Bid</strong></td><td class="num">3,469</td><td class="num"><strong>22,325 ms</strong></td><td class="num">94,076 ms</td><td class="num"><strong>11 (0.32%) ❌</strong></td></tr>
+        <tr><td>2b. WebSocket Open Connection</td><td class="num">3,426</td><td class="num">781 ms</td><td class="num">4,702 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+        <tr><td>2e. WS SIO Confirm (40)</td><td class="num">3,424</td><td class="num">169 ms</td><td class="num">1,734 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+        <tr class="highlight-green"><td>2e2. WS Check Latest Windowed (430)</td><td class="num">3,423</td><td class="num">734 ms</td><td class="num">8,467 ms</td><td class="num" style="color:#27ae60">0 ✅</td></tr>
+        <tr><td>2g. WS Join Confirm (431)</td><td class="num">3,421</td><td class="num">175 ms</td><td class="num">1,033 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+        <tr><td>2i. WS Check Latest Response (432)</td><td class="num">3,421</td><td class="num">238 ms</td><td class="num">1,747 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+        <tr><td>2j. GET Bidding Validation</td><td class="num">3,420</td><td class="num">691 ms</td><td class="num">23,087 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+        <tr class="highlight-red"><td><strong>2j-fresh. GET Fresh Price</strong></td><td class="num">3,419</td><td class="num"><strong>22,513 ms</strong></td><td class="num">85,617 ms</td><td class="num"><strong>25 (0.73%) ❌</strong></td></tr>
+        <tr><td>2k–2p. WS Bid &amp; Broadcasts</td><td class="num">20,220</td><td class="num">&lt;10 ms</td><td class="num">5,010 ms</td><td class="num" style="color:#27ae60">0</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECTION 4: Error Analysis -->
+  <div class="section">
+    <h2>🚨 Analisis Error</h2>
+
+    <div class="callout callout-yellow">
+      <strong>⏱ Semua 36 error terjadi dalam window 10 menit: menit ke-20:50 – 21:00</strong>
+      <ul style="margin-top:8px;padding-left:20px;">
+        <li>Endpoint: <code>/auction/customer-history-bid</code> (11 error dari 2a, 25 error dari 2j-fresh)</li>
+        <li>HTTP Code: <strong>500 Internal Server Error</strong></li>
+        <li>Elapsed saat error: <strong>~20,000 ms</strong> — server menunggu 20 detik sebelum timeout</li>
+        <li>Setelah menit ke-21: <strong>0 error</strong> hingga test selesai — server recover sendiri</li>
+      </ul>
+    </div>
+
+    <div class="callout callout-red">
+      <strong>⚠️ Risiko di Production</strong>
+      Threshold error tercapai di menit ke-20 staging. Di production dengan data <code>history_bid</code>
+      yang jauh lebih besar, threshold ini bisa tercapai lebih cepat — estimasi menit ke-5 hingga ke-10.
+      Request yang "menggantung" 20 detik sebelum 500 berpotensi menyebabkan <strong>cascading failure</strong>.
+    </div>
+  </div>
+
+  <!-- SECTION 5: Findings -->
+  <div class="section">
+    <h2>📌 Temuan &amp; Rekomendasi</h2>
+
+    <div class="callout callout-red">
+      <strong>🔴 CRITICAL — Wajib Ditangani Sebelum Production</strong>
+      <strong style="display:block;margin-top:10px;">Endpoint: <code>GET /auction/customer-history-bid</code></strong>
+      <p style="margin-top:6px;">Dipanggil 2x per bid cycle (step 2a &amp; 2j-fresh). Bottleneck utama sistem.</p>
+      <ul style="margin-top:8px;padding-left:20px;">
+        <li>Avg response time 30 menit: <strong>~22,000 ms</strong></li>
+        <li>HTTP 500 muncul di menit ke-20 dengan 100 user concurrent</li>
+        <li>Query makin lambat seiring data <code>history_bid</code> bertumbuh</li>
+      </ul>
+      <p style="margin-top:10px;font-weight:600;">Rekomendasi:</p>
+      <ol style="margin-top:4px;padding-left:20px;">
+        <li>Tambahkan <strong>database index</strong> pada kolom <code>auction_id</code>, <code>auction_lane</code>, <code>auction_lot</code>, <code>user_id</code></li>
+        <li>Implementasi <strong>caching</strong> (Redis / in-memory) untuk data yang tidak berubah cepat</li>
+        <li>Evaluasi apakah query perlu <strong>pagination</strong> atau limit hasil</li>
+      </ol>
+    </div>
+
+    <div class="callout callout-yellow">
+      <strong>🟡 MINOR — Perlu Diperhatikan</strong>
+      <ul style="margin-top:8px;padding-left:20px;">
+        <li><strong>GET /frontsite/terms-and-conditions</strong> — avg 1,707ms. Data statis, kandidat caching.</li>
+        <li><strong>GET /frontsite/list-translation</strong> — avg 1,001ms. Data statis, kandidat caching.</li>
+      </ul>
+    </div>
+
+    <div class="callout callout-green">
+      <strong>✅ Sistem Stabil Selama 30 Menit</strong>
+      <p style="margin-top:4px;">Throughput flat di 45/s, tidak ada collapse, error hanya 0.04% dan terisolasi di window 10 menit.
+      Sistem terbukti mampu menahan sustained load 100u selama 30 menit.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6: Verdict -->
+  <div class="section">
+    <h2>✅ Verdict</h2>
+    <div class="verdict-grid">
+      <div class="verdict-card pass">
+        <div class="aspect">Stabilitas 30 Menit</div>
+        <div class="status">✅ Lulus</div>
+        <div class="note">Throughput flat, tidak collapse</div>
+      </div>
+      <div class="verdict-card warn">
+        <div class="aspect">Error Rate</div>
+        <div class="status">⚠️ Lulus Bersyarat</div>
+        <div class="note">0.04% error, terisolasi menit ke-20</div>
+      </div>
+      <div class="verdict-card fail">
+        <div class="aspect">/customer-history-bid</div>
+        <div class="status">❌ Perlu Perbaikan</div>
+        <div class="note">Avg 22,325ms, wajib fix sebelum production</div>
+      </div>
+      <div class="verdict-card warn">
+        <div class="aspect">Overall Endurance</div>
+        <div class="status">⚠️ Lulus Bersyarat</div>
+        <div class="note">Aman jika History Bid diperbaiki</div>
+      </div>
+    </div>
+
+    <div class="callout callout-blue" style="margin-top:20px;">
+      <strong>Kesimpulan</strong>
+      Sistem secara keseluruhan stabil dan mampu bertahan 30 menit dengan 100 concurrent users.
+      Namun <strong>endpoint <code>/auction/customer-history-bid</code> wajib diperbaiki di sisi BE sebelum go-live</strong> —
+      ini risiko nyata terhadap stabilitas production pada saat auction berlangsung lama dengan banyak pengguna aktif.
+    </div>
+  </div>
+
+</div>
+
+<div style="position:fixed;bottom:24px;right:24px;">
+  <a id="downloadBtn" download="endurance_test_report_20260507.html"
+     style="display:inline-flex;align-items:center;gap:8px;background:#1e3a5f;color:white;padding:12px 20px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:600;box-shadow:0 4px 12px rgba(0,0,0,0.25);">
+    ⬇ Download Report
+  </a>
+</div>
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('downloadBtn');
+    var html = document.documentElement.outerHTML;
+    var blob = new Blob([html], { type: 'text/html' });
+    btn.href = URL.createObjectURL(blob);
+  });
+</script>
+
+<div class="footer">
+  Generated: 7 Mei 2026 &nbsp;|&nbsp; AX Auction Endurance Test Report
+</div>
+
+</body>
+</html>

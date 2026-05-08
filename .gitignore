@@ -1,0 +1,14 @@
+# Sensitive credentials - NEVER push to repo
+tokens.csv
+users_credentials.csv
+
+# Test result files (large, generated)
+*.jtl
+*.log
+
+# Customer data
+List Customer/
+
+# OS files
+.DS_Store
+Thumbs.db
