@@ -4951,8 +4951,8 @@ def html = resp?.effects?.html ?: ""
 def mVehicle = (html =~ /name="inventory_car_id"\s+value="([^"]+)"/)
 if (mVehicle.find()) {
     def rawVehicleJson = mVehicle.group(1)
-        .replace('&quot;', '"')
-        .replace('&amp;', '&amp;')
+        .replace('&amp;quot;', '"')
+        .replace('&amp;amp;', '&amp;')
     vars.put("VEHICLE_JSON", rawVehicleJson)
     try {
         def vData = new JsonSlurper().parseText(rawVehicleJson)
