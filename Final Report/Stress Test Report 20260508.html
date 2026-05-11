@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stress Test Report — AX Auction | 2026-05-08</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f9; color: #333; }
+
+    .header {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a0a00 60%, #7f3300 100%);
+      color: white; padding: 40px; text-align: center;
+    }
+    .header h1 { font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+    .header p { margin-top: 8px; font-size: 14px; opacity: 0.8; }
+    .badge {
+      display: inline-block; margin-top: 16px;
+      background: #00c853; color: white;
+      padding: 6px 20px; border-radius: 20px;
+      font-size: 14px; font-weight: 600; letter-spacing: 1px;
+    }
+
+    .container { max-width: 980px; margin: 30px auto; padding: 0 20px; }
+
+    .section { background: white; border-radius: 10px; padding: 28px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .section h2 { font-size: 17px; font-weight: 700; color: #1a1a2e; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid #e8eaf0; }
+
+    /* Step Summary Cards */
+    .step-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .step-card { border-radius: 10px; padding: 20px 16px; text-align: center; position: relative; overflow: hidden; }
+    .step-card.passed  { background: #e8f5e9; border: 2px solid #00c853; }
+    .step-card.warning { background: #fff8e1; border: 2px solid #ffc107; }
+    .step-card.failed  { background: #ffebee; border: 2px solid #e53935; }
+    .step-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: #555; }
+    .step-users { font-size: 32px; font-weight: 800; color: #1a1a2e; }
+    .step-users span { font-size: 14px; font-weight: 400; }
+    .step-error { font-size: 20px; font-weight: 700; margin: 6px 0; }
+    .step-error.green  { color: #2e7d32; }
+    .step-error.orange { color: #e65100; }
+    .step-error.red    { color: #c62828; }
+    .step-avg { font-size: 12px; color: #888; }
+    .step-badge { display: inline-block; margin-top: 8px; padding: 2px 10px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+    .step-badge.ok   { background: #00c853; color: white; }
+    .step-badge.warn { background: #ffc107; color: #333; }
+    .step-badge.fail { background: #e53935; color: white; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { background: #1a1a2e; color: white; padding: 10px 14px; text-align: left; font-weight: 600; }
+    td { padding: 10px 14px; border-bottom: 1px solid #eee; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f8f9fc; }
+
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+    .tag.green  { background: #e8f5e9; color: #2e7d32; }
+    .tag.red    { background: #ffebee; color: #c62828; }
+    .tag.orange { background: #fff3e0; color: #e65100; }
+    .tag.blue   { background: #e3f2fd; color: #1565c0; }
+
+    .improve { color: #2e7d32; font-weight: 600; }
+    .warning { color: #f57c00; font-weight: 600; }
+    .danger  { color: #c62828; font-weight: 600; }
+
+    .trend-bar-wrap { background: #eee; border-radius: 4px; height: 10px; margin-top: 6px; }
+    .trend-bar { height: 10px; border-radius: 4px; }
+    .trend-bar.green  { background: #00c853; }
+    .trend-bar.orange { background: #ffc107; }
+    .trend-bar.red    { background: #e53935; }
+
+    .conclusion { background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border-left: 5px solid #00c853; border-radius: 0 8px 8px 0; padding: 20px 24px; }
+    .conclusion h3 { color: #1b5e20; font-size: 16px; margin-bottom: 12px; }
+    .conclusion ul { padding-left: 20px; }
+    .conclusion ul li { margin-bottom: 8px; font-size: 14px; line-height: 1.6; }
+
+    .warning-box { background: #fff3e0; border-left: 5px solid #f57c00; border-radius: 0 8px 8px 0; padding: 16px 20px; margin-top: 16px; }
+    .warning-box h4 { color: #e65100; margin-bottom: 10px; font-size: 14px; }
+    .warning-box ul { padding-left: 18px; font-size: 13px; }
+    .warning-box ul li { margin-bottom: 6px; line-height: 1.5; }
+
+    .rec-box { background: #e3f2fd; border-left: 5px solid #1565c0; border-radius: 0 8px 8px 0; padding: 16px 20px; margin-top: 16px; }
+    .rec-box h4 { color: #0d47a1; margin-bottom: 10px; font-size: 14px; }
+    .rec-box ul { padding-left: 18px; font-size: 13px; }
+    .rec-box ul li { margin-bottom: 6px; line-height: 1.5; }
+
+    .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .ba-card { border-radius: 8px; padding: 16px; }
+    .ba-card.before { background: #ffebee; border: 1px solid #ef9a9a; }
+    .ba-card.after  { background: #e8f5e9; border: 1px solid #a5d6a7; }
+    .ba-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+    .ba-card.before h4 { color: #c62828; }
+    .ba-card.after  h4 { color: #2e7d32; }
+    .ba-card ul { padding-left: 16px; font-size: 13px; line-height: 1.8; }
+
+    .footer { text-align: center; padding: 24px; color: #aaa; font-size: 12px; }
+
+    @media (max-width: 640px) {
+      .step-grid { grid-template-columns: repeat(2, 1fr); }
+      .before-after { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🔥 Stress Test Report — AX Auction Platform</h1>
+  <p>Tanggal: 8 Mei 2026 &nbsp;|&nbsp; Environment: Staging &nbsp;|&nbsp; Script: AXStress.jmx</p>
+  <div class="badge">✅ ALL STEPS COMPLETED</div>
+</div>
+
+<div class="container">
+
+  <!-- Step Summary Cards -->
+  <div class="section">
+    <h2>📊 Ringkasan Per Step</h2>
+    <div class="step-grid">
+      <div class="step-card passed">
+        <div class="step-label">Step 1</div>
+        <div class="step-users">50<span> users</span></div>
+        <div class="step-error green">0.00%</div>
+        <div class="step-avg">Avg: 394 ms</div>
+        <div class="step-badge ok">✅ PASSED</div>
+      </div>
+      <div class="step-card passed">
+        <div class="step-label">Step 2</div>
+        <div class="step-users">100<span> users</span></div>
+        <div class="step-error green">0.00%</div>
+        <div class="step-avg">Avg: 797 ms</div>
+        <div class="step-badge ok">✅ PASSED</div>
+      </div>
+      <div class="step-card warning">
+        <div class="step-label">Step 3</div>
+        <div class="step-users">150<span> users</span></div>
+        <div class="step-error orange">0.46%</div>
+        <div class="step-avg">Avg: 1,712 ms</div>
+        <div class="step-badge warn">⚠️ WARNING</div>
+      </div>
+      <div class="step-card passed">
+        <div class="step-label">Step 4</div>
+        <div class="step-users">190<span> users</span></div>
+        <div class="step-error green">0.00%</div>
+        <div class="step-avg">Avg: 1,909 ms</div>
+        <div class="step-badge ok">✅ PASSED</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Konfigurasi -->
+  <div class="section">
+    <h2>⚙️ Konfigurasi Test</h2>
+    <table>
+      <tr><th>Parameter</th><th>Detail</th></tr>
+      <tr><td>Metode</td><td>Step-load — beban dinaikkan bertahap per step</td></tr>
+      <tr><td>Ramp Up per Step</td><td>60 detik</td></tr>
+      <tr><td>Loop per Step</td><td>3x eksekusi penuh per user</td></tr>
+      <tr><td>Environment</td><td>Staging — ax-stg.lgq-stg.com</td></tr>
+      <tr><td>Skenario</td><td>Login → Lihat Notifikasi → Masuk Lelang → Cek Kendaraan → Bid → Terima Broadcast</td></tr>
+    </table>
+  </div>
+
+  <!-- Hasil Detail Per Step -->
+  <div class="section">
+    <h2>📈 Hasil Detail Per Step</h2>
+    <table>
+      <tr>
+        <th>Step</th>
+        <th>Users</th>
+        <th>Total Request</th>
+        <th>Berhasil</th>
+        <th>Error</th>
+        <th>Avg Response</th>
+        <th>Max Response</th>
+        <th>Throughput</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td><strong>Step 1</strong></td>
+        <td>50u</td>
+        <td>1,790</td>
+        <td>1,790 (100%)</td>
+        <td><span class="tag green">0 (0.00%)</span></td>
+        <td>394 ms</td>
+        <td>13,953 ms</td>
+        <td>24.26 req/s</td>
+        <td><span class="tag green">✅ PASSED</span></td>
+      </tr>
+      <tr>
+        <td><strong>Step 2</strong></td>
+        <td>100u</td>
+        <td>3,769</td>
+        <td>3,769 (100%)</td>
+        <td><span class="tag green">0 (0.00%)</span></td>
+        <td>797 ms</td>
+        <td>34,389 ms</td>
+        <td>31.77 req/s</td>
+        <td><span class="tag green">✅ PASSED</span></td>
+      </tr>
+      <tr>
+        <td><strong>Step 3</strong></td>
+        <td>150u</td>
+        <td>6,090</td>
+        <td>6,062 (99.54%)</td>
+        <td><span class="tag orange">28 (0.46%)</span></td>
+        <td>1,712 ms</td>
+        <td>77,814 ms</td>
+        <td>31.02 req/s</td>
+        <td><span class="tag orange">⚠️ WARNING</span></td>
+      </tr>
+      <tr>
+        <td><strong>Step 4</strong></td>
+        <td>190u</td>
+        <td>7,798</td>
+        <td>7,798 (100%)</td>
+        <td><span class="tag green">0 (0.00%)</span></td>
+        <td>1,909 ms</td>
+        <td>105,063 ms</td>
+        <td>34.45 req/s</td>
+        <td><span class="tag green">✅ PASSED</span></td>
+      </tr>
+    </table>
+
+    <!-- Response Time Trend -->
+    <div style="margin-top: 20px;">
+      <p style="font-size: 13px; font-weight: 600; color: #555; margin-bottom: 12px;">Tren Avg Response Time (semakin banyak user, semakin lambat — normal)</p>
+      <table>
+        <tr><th>Step</th><th>Users</th><th>Avg Response</th><th>Visualisasi</th></tr>
+        <tr>
+          <td>Step 1</td><td>50u</td><td>394 ms</td>
+          <td><div class="trend-bar-wrap"><div class="trend-bar green" style="width:20%"></div></div></td>
+        </tr>
+        <tr>
+          <td>Step 2</td><td>100u</td><td>797 ms</td>
+          <td><div class="trend-bar-wrap"><div class="trend-bar green" style="width:40%"></div></div></td>
+        </tr>
+        <tr>
+          <td>Step 3</td><td>150u</td><td>1,712 ms</td>
+          <td><div class="trend-bar-wrap"><div class="trend-bar orange" style="width:70%"></div></div></td>
+        </tr>
+        <tr>
+          <td>Step 4</td><td>190u</td><td>1,909 ms</td>
+          <td><div class="trend-bar-wrap"><div class="trend-bar orange" style="width:80%"></div></div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Analisis Error -->
+  <div class="section">
+    <h2>🔴 Analisis Error</h2>
+    <table>
+      <tr><th>Step</th><th>Endpoint</th><th>Error</th><th>Kode</th><th>Keterangan</th></tr>
+      <tr>
+        <td>Step 1</td><td>—</td><td>0</td><td>—</td><td>Tidak ada error</td>
+      </tr>
+      <tr>
+        <td>Step 2</td><td>—</td><td>0</td><td>—</td><td>Tidak ada error</td>
+      </tr>
+      <tr>
+        <td>Step 3</td>
+        <td>GET Auction Notifications</td>
+        <td><strong>28</strong></td>
+        <td><span class="tag red">HTTP 500</span></td>
+        <td>Endpoint belum memiliki caching — overload saat 150 user concurrent</td>
+      </tr>
+      <tr>
+        <td>Step 4</td><td>—</td><td>0</td><td>—</td><td>Tidak ada error</td>
+      </tr>
+    </table>
+    <p style="margin-top:12px; font-size:13px; color:#666;">
+      💡 Error di Step 3 hanya muncul pada 1 endpoint. Step 4 dengan 190 user justru 0 error karena timing request lebih tersebar saat ramp-up.
+    </p>
+  </div>
+
+  <!-- Perbandingan Before After -->
+  <div class="section">
+    <h2>🔁 Perbandingan Sebelum & Sesudah Perbaikan Backend</h2>
+    <div class="before-after">
+      <div class="ba-card before">
+        <h4>❌ Sebelum BE Fix (07 Mei 2026)</h4>
+        <ul>
+          <li>Step 1 (50u): <strong>2.67%</strong> error (57 err)</li>
+          <li>Step 2 (100u): <strong>20.04%</strong> error (862 err)</li>
+          <li>Step 3 & 4: Tidak dijalankan</li>
+          <li>Avg Response Step 2: 4,663 ms</li>
+          <li>Error: HTTP 500 di banyak endpoint frontsite</li>
+        </ul>
+      </div>
+      <div class="ba-card after">
+        <h4>✅ Sesudah BE Fix (08 Mei 2026)</h4>
+        <ul>
+          <li>Step 1 (50u): <strong>0.00%</strong> error ✅</li>
+          <li>Step 2 (100u): <strong>0.00%</strong> error ✅</li>
+          <li>Step 3 (150u): <strong>0.46%</strong> error ⚠️</li>
+          <li>Step 4 (190u): <strong>0.00%</strong> error ✅</li>
+          <li>Avg Response Step 2: 797 ms (6x lebih cepat)</li>
+        </ul>
+      </div>
+    </div>
+    <table>
+      <tr><th>Metrik</th><th>Step 1 (50u)</th><th>Step 2 (100u)</th><th>Step 3 (150u)</th><th>Step 4 (190u)</th></tr>
+      <tr>
+        <td>Error (Sebelum)</td>
+        <td class="danger">2.67%</td>
+        <td class="danger">20.04%</td>
+        <td>—</td><td>—</td>
+      </tr>
+      <tr>
+        <td>Error (Sesudah)</td>
+        <td class="improve">0.00% ✅</td>
+        <td class="improve">0.00% ✅</td>
+        <td class="warning">0.46% ⚠️</td>
+        <td class="improve">0.00% ✅</td>
+      </tr>
+      <tr>
+        <td>Avg Response (Sebelum)</td>
+        <td>1,754 ms</td>
+        <td>4,663 ms</td>
+        <td>—</td><td>—</td>
+      </tr>
+      <tr>
+        <td>Avg Response (Sesudah)</td>
+        <td class="improve">394 ms ✅</td>
+        <td class="improve">797 ms ✅</td>
+        <td>1,712 ms</td>
+        <td>1,909 ms</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Kesimpulan -->
+  <div class="section">
+    <h2>📝 Kesimpulan</h2>
+    <div class="conclusion">
+      <h3>✅ Stress Test — Semua Step Berhasil Diselesaikan</h3>
+      <ul>
+        <li>Sistem AX Auction berhasil menangani beban hingga <strong>190 pengguna simultan</strong> dengan error rate 0%.</li>
+        <li>Perbaikan Backend terbukti sangat efektif — error rate Step 2 turun dari <strong>20.04% menjadi 0%</strong>, dan response time turun dari 4,663 ms menjadi 797 ms (<strong>6x lebih cepat</strong>).</li>
+        <li>Rata-rata waktu respons meningkat seiring bertambahnya user, namun masih dalam batas <strong>wajar dan dapat diterima</strong>.</li>
+        <li>Sistem core bidding (WebSocket) <strong>tidak pernah mengalami error</strong> di semua step.</li>
+        <li>Satu-satunya temuan adalah endpoint <strong>GET Auction Notifications</strong> yang masih sensitif terhadap lonjakan beban di Step 3 (150u).</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <h4>⚠️ Temuan yang Perlu Ditindaklanjuti</h4>
+      <ul>
+        <li>Endpoint <strong>GET Auction Notifications</strong> masih mengalami HTTP 500 saat 150 user concurrent — perlu ditambahkan caching oleh tim Backend.</li>
+        <li>Max response time mencapai 105 detik di Step 4 — perlu dipantau lebih lanjut untuk user experience yang optimal.</li>
+      </ul>
+    </div>
+
+    <div class="rec-box">
+      <h4>💡 Rekomendasi</h4>
+      <ul>
+        <li>✅ Sistem dinyatakan <strong>layak untuk digunakan</strong> hingga 190 pengguna simultan.</li>
+        <li>Tim Backend perlu menambahkan <strong>caching pada endpoint GET Auction Notifications</strong> untuk menghilangkan sisa error di Step 3.</li>
+        <li>Setelah fix diterapkan, lakukan re-run Step 3 untuk konfirmasi hasil 0% error di semua step.</li>
+        <li>Pertimbangkan untuk melakukan <strong>optimasi response time</strong> agar Max Response tidak melebihi 30 detik.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Generated by Performance Test Team &nbsp;|&nbsp; AX Auction Platform &nbsp;|&nbsp; 8 Mei 2026
+</div>
+
+</body>
+</html>

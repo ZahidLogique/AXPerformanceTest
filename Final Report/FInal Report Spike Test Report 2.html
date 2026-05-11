@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spike Test Report — AX Auction | 2026-05-08</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6f9; color: #333; }
+
+    .header {
+      background: linear-gradient(135deg, #0d0d1a 0%, #1a0533 60%, #4a0072 100%);
+      color: white; padding: 40px; text-align: center;
+    }
+    .header h1 { font-size: 28px; font-weight: 700; letter-spacing: 1px; }
+    .header p { margin-top: 8px; font-size: 14px; opacity: 0.8; }
+    .badge {
+      display: inline-block; margin-top: 16px;
+      background: #00c853; color: white;
+      padding: 6px 20px; border-radius: 20px;
+      font-size: 14px; font-weight: 600; letter-spacing: 1px;
+    }
+
+    .container { max-width: 960px; margin: 30px auto; padding: 0 20px; }
+
+    .section { background: white; border-radius: 10px; padding: 28px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .section h2 { font-size: 17px; font-weight: 700; color: #1a1a2e; margin-bottom: 18px; padding-bottom: 10px; border-bottom: 2px solid #e8eaf0; }
+
+    .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .kpi-card { background: #f8f9fc; border-radius: 8px; padding: 18px 14px; text-align: center; border-top: 4px solid #4a0072; }
+    .kpi-card.green  { border-top-color: #00c853; }
+    .kpi-card.red    { border-top-color: #e53935; }
+    .kpi-card.blue   { border-top-color: #1565c0; }
+    .kpi-card.orange { border-top-color: #f57c00; }
+    .kpi-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+    .kpi-value { font-size: 26px; font-weight: 700; color: #1a1a2e; margin: 6px 0 2px; }
+    .kpi-sub { font-size: 11px; color: #aaa; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th { background: #1a1a2e; color: white; padding: 10px 14px; text-align: left; font-weight: 600; }
+    td { padding: 10px 14px; border-bottom: 1px solid #eee; }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #f8f9fc; }
+
+    .tag { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+    .tag.green  { background: #e8f5e9; color: #2e7d32; }
+    .tag.red    { background: #ffebee; color: #c62828; }
+    .tag.orange { background: #fff3e0; color: #e65100; }
+    .tag.blue   { background: #e3f2fd; color: #1565c0; }
+
+    .improve { color: #2e7d32; font-weight: 600; }
+    .warning { color: #f57c00; font-weight: 600; }
+    .danger  { color: #c62828; font-weight: 600; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, #f3e5f5, #ede7f6);
+      border-left: 5px solid #7b1fa2;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px; margin-bottom: 16px;
+      font-size: 14px; line-height: 1.7;
+    }
+
+    .conclusion { background: linear-gradient(135deg, #e8f5e9, #f1f8e9); border-left: 5px solid #00c853; border-radius: 0 8px 8px 0; padding: 20px 24px; }
+    .conclusion h3 { color: #1b5e20; font-size: 16px; margin-bottom: 12px; }
+    .conclusion ul { padding-left: 20px; }
+    .conclusion ul li { margin-bottom: 8px; font-size: 14px; line-height: 1.6; }
+
+    .warning-box { background: #fff3e0; border-left: 5px solid #f57c00; border-radius: 0 8px 8px 0; padding: 16px 20px; margin-top: 16px; }
+    .warning-box h4 { color: #e65100; margin-bottom: 10px; font-size: 14px; }
+    .warning-box ul { padding-left: 18px; font-size: 13px; }
+    .warning-box ul li { margin-bottom: 6px; line-height: 1.5; }
+
+    .rec-box { background: #e3f2fd; border-left: 5px solid #1565c0; border-radius: 0 8px 8px 0; padding: 16px 20px; margin-top: 16px; }
+    .rec-box h4 { color: #0d47a1; margin-bottom: 10px; font-size: 14px; }
+    .rec-box ul { padding-left: 18px; font-size: 13px; }
+    .rec-box ul li { margin-bottom: 6px; line-height: 1.5; }
+
+    .footer { text-align: center; padding: 24px; color: #aaa; font-size: 12px; }
+
+    @media (max-width: 600px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>⚡ Spike Test Report — AX Auction Platform</h1>
+  <p>Tanggal: 8 Mei 2026 &nbsp;|&nbsp; Environment: Staging &nbsp;|&nbsp; Script: AXSpike.jmx</p>
+  <div class="badge">✅ SIGNIFICANT IMPROVEMENT</div>
+</div>
+
+<div class="container">
+
+  <!-- KPI -->
+  <div class="section">
+    <h2>📊 Ringkasan Hasil</h2>
+    <div class="kpi-grid">
+      <div class="kpi-card green">
+        <div class="kpi-label">Total Request</div>
+        <div class="kpi-value">4,401</div>
+        <div class="kpi-sub">Selama 2.4 menit</div>
+      </div>
+      <div class="kpi-card orange">
+        <div class="kpi-label">Error Rate</div>
+        <div class="kpi-value">1.07%</div>
+        <div class="kpi-sub">47 dari 4,401</div>
+      </div>
+      <div class="kpi-card blue">
+        <div class="kpi-label">Throughput</div>
+        <div class="kpi-value">30.71</div>
+        <div class="kpi-sub">request / detik</div>
+      </div>
+      <div class="kpi-card green">
+        <div class="kpi-label">Avg Response</div>
+        <div class="kpi-value">931</div>
+        <div class="kpi-sub">milliseconds</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Konfigurasi -->
+  <div class="section">
+    <h2>⚙️ Konfigurasi Test</h2>
+    <table>
+      <tr><th>Parameter</th><th>Detail</th></tr>
+      <tr><td>Jumlah User</td><td>100 pengguna simultan</td></tr>
+      <tr><td>Ramp Up</td><td>60 detik (user naik cepat — simulasi lonjakan mendadak)</td></tr>
+      <tr><td>Loop</td><td>1x (satu kali eksekusi penuh per user)</td></tr>
+      <tr><td>Duration</td><td>2.4 menit</td></tr>
+      <tr><td>Environment</td><td>Staging — ax-stg.lgq-stg.com</td></tr>
+      <tr><td>Skenario</td><td>Login → Lihat Notifikasi → Masuk Lelang → Cek Kendaraan → Bid</td></tr>
+    </table>
+  </div>
+
+  <!-- Hasil Detail -->
+  <div class="section">
+    <h2>📈 Hasil Detail</h2>
+    <table>
+      <tr><th>Metrik</th><th>Nilai</th></tr>
+      <tr><td>Total Request</td><td><strong>4,401</strong></td></tr>
+      <tr><td>Request Berhasil</td><td><strong>4,354</strong> <span class="tag green">98.93%</span></td></tr>
+      <tr><td>Request Gagal</td><td><strong>47</strong> <span class="tag orange">1.07%</span></td></tr>
+      <tr><td>Rata-rata Waktu Respons</td><td><strong>931 ms</strong></td></tr>
+      <tr><td>Respons Tercepat</td><td><strong>0 ms</strong></td></tr>
+      <tr><td>Respons Terlambat</td><td><strong>34,607 ms</strong></td></tr>
+      <tr><td>Throughput</td><td><strong>30.71 req/s</strong></td></tr>
+    </table>
+  </div>
+
+  <!-- Analisis Error -->
+  <div class="section">
+    <h2>🔴 Analisis Error</h2>
+    <div class="highlight-box">
+      💡 <strong>Seluruh 47 error berasal dari 1 endpoint saja:</strong> <code>GET Auction Notifications</code> yang mengembalikan HTTP 500 (Internal Server Error) saat menerima lonjakan request secara bersamaan.
+    </div>
+    <table>
+      <tr><th>Endpoint</th><th>Error</th><th>Kode</th><th>Penyebab</th></tr>
+      <tr>
+        <td>GET Auction Notifications</td>
+        <td><strong>47</strong></td>
+        <td><span class="tag red">HTTP 500</span></td>
+        <td>Endpoint frontsite belum memiliki caching — request langsung hit database saat lonjakan</td>
+      </tr>
+      <tr>
+        <td>Semua endpoint lainnya</td>
+        <td><strong>0</strong></td>
+        <td><span class="tag green">200 OK</span></td>
+        <td>—</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Perbandingan -->
+  <div class="section">
+    <h2>🔁 Perbandingan Sebelum & Sesudah Perbaikan Backend</h2>
+    <table>
+      <tr><th>Metrik</th><th>Sebelum Fix (07/05)</th><th>Sesudah Fix (08/05)</th><th>Perubahan</th></tr>
+      <tr>
+        <td>Total Error</td>
+        <td>484 error</td>
+        <td><strong>47 error</strong></td>
+        <td class="improve">✅ Turun 90%</td>
+      </tr>
+      <tr>
+        <td>Error Rate</td>
+        <td>7.33%</td>
+        <td><strong>1.07%</strong></td>
+        <td class="improve">✅ Turun drastis</td>
+      </tr>
+      <tr>
+        <td>Avg Response Time</td>
+        <td>2,935 ms</td>
+        <td><strong>931 ms</strong></td>
+        <td class="improve">✅ 3x lebih cepat</td>
+      </tr>
+      <tr>
+        <td>Throughput</td>
+        <td>27.6 req/s</td>
+        <td><strong>30.71 req/s</strong></td>
+        <td class="improve">✅ Naik +11%</td>
+      </tr>
+      <tr>
+        <td>HTTP 500 — Auction Notifications</td>
+        <td>Ada (masuk dalam 484 error)</td>
+        <td><strong>47 error (masih ada)</strong></td>
+        <td class="warning">⚠️ Belum sepenuhnya fix</td>
+      </tr>
+      <tr>
+        <td>HTTP 500 — Endpoint lainnya</td>
+        <td>Ada</td>
+        <td><strong>0</strong></td>
+        <td class="improve">✅ Teratasi</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Kesimpulan -->
+  <div class="section">
+    <h2>📝 Kesimpulan</h2>
+    <div class="conclusion">
+      <h3>✅ Spike Test — Peningkatan Signifikan</h3>
+      <ul>
+        <li>Perbaikan dari tim Backend terbukti sangat efektif — error rate turun dari <strong>7.33% menjadi 1.07%</strong> (berkurang 90%).</li>
+        <li>Rata-rata waktu respons membaik drastis dari <strong>2,935 ms menjadi 931 ms</strong> — 3x lebih cepat dari sebelumnya.</li>
+        <li>Hampir semua endpoint sudah mampu menangani lonjakan 100 user dalam 60 detik tanpa error.</li>
+        <li>Sistem core bidding (WebSocket) tetap berjalan <strong>100% tanpa error</strong> saat spike.</li>
+      </ul>
+    </div>
+
+    <div class="warning-box">
+      <h4>⚠️ Temuan yang Perlu Ditindaklanjuti</h4>
+      <ul>
+        <li>Endpoint <strong>GET Auction Notifications</strong> masih mengalami HTTP 500 saat lonjakan load — endpoint ini belum mendapat perbaikan caching dari BE.</li>
+        <li>Diperlukan implementasi caching atau optimasi query pada endpoint Auction Notifications agar bisa menangani spike load.</li>
+      </ul>
+    </div>
+
+    <div class="rec-box">
+      <h4>💡 Rekomendasi</h4>
+      <ul>
+        <li>✅ Hasil spike test sudah jauh lebih baik dan sistem dinyatakan <strong>layak untuk digunakan</strong> dengan catatan.</li>
+        <li>Tim Backend perlu menambahkan <strong>caching pada endpoint GET Auction Notifications</strong> untuk menyelesaikan sisa error.</li>
+        <li>Setelah fix diterapkan, lakukan re-run spike test untuk memverifikasi hasil 0% error.</li>
+        <li>Lanjutkan ke <strong>Stress Test</strong> (Step 3 & 4) setelah perbaikan Auction Notifications selesai.</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Generated by Performance Test Team &nbsp;|&nbsp; AX Auction Platform &nbsp;|&nbsp; 8 Mei 2026
+</div>
+
+</body>
+</html>

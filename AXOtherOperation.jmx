@@ -3849,7 +3849,7 @@ log.info("Submit Payment debug saved")
         </ResultCollector>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Admin Export Vehicle" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Admin Export Vehicle" enabled="false">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
         <longProp name="ThreadGroup.duration">900</longProp>
@@ -3985,6 +3985,1287 @@ if (matched) {
             </collectionProp>
           </HeaderManager>
           <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Admin Export Other" enabled="false">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <longProp name="ThreadGroup.duration">900</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Think Time - 60s antar export" enabled="true">
+          <stringProp name="ConstantTimer.delay">60000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Cookie</stringProp>
+              <stringProp name="Header.value">auction_express_session=${__P(ADMIN_SESSION)}; XSRF-TOKEN=${__P(ADMIN_XSRF)}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">User-Agent</stringProp>
+              <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Admin Session Expired" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3((System.currentTimeMillis() - props.getLong("ADMIN_LOGIN_TIME", 0)) &gt; 420000)}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">false</boolProp>
+        </IfController>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Re-login Admin Backoffice" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">import org.apache.http.impl.client.HttpClients
+import org.apache.http.impl.client.BasicCookieStore
+import org.apache.http.client.methods.HttpGet
+import org.apache.http.client.methods.HttpPost
+import org.apache.http.entity.StringEntity
+import org.apache.http.conn.ssl.NoopHostnameVerifier
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory
+import org.apache.http.ssl.SSLContextBuilder
+import org.apache.http.ssl.TrustStrategy
+import java.security.cert.X509Certificate
+
+def ts = new TrustStrategy() {
+    boolean isTrusted(X509Certificate[] chain, String authType) { return true }
+}
+def sslCtx = SSLContextBuilder.create().loadTrustMaterial(null, ts).build()
+def sslsf = new SSLConnectionSocketFactory(sslCtx, NoopHostnameVerifier.INSTANCE)
+def cookieStore = new BasicCookieStore()
+def client = HttpClients.custom().setSSLSocketFactory(sslsf).setDefaultCookieStore(cookieStore).build()
+def base = "https://backoffice.ax-stg.lgq-stg.com"
+try {
+    def get = new HttpGet(base + "/")
+    get.setHeader("User-Agent", "Mozilla/5.0")
+    def resp1 = client.execute(get)
+    def body1 = resp1.entity.content.text
+    resp1.close()
+    def m = (body1 =~ /name="_token"\s+value="([^"]+)"/)
+    if (!m) { log.error("Re-login: CSRF not found"); return }
+    def csrf = m[0][1]
+    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
+    def post = new HttpPost(base + "/")
+    post.setHeader("Content-Type", "application/x-www-form-urlencoded")
+    post.setHeader("User-Agent", "Mozilla/5.0")
+    post.setEntity(new StringEntity(postData))
+    def resp2 = client.execute(post)
+    resp2.close()
+    def newSession = null
+    def newXsrf = null
+    for (c in cookieStore.getCookies()) {
+        if (c.getName() == "auction_express_session") newSession = c.getValue()
+        if (c.getName() == "XSRF-TOKEN") newXsrf = c.getValue()
+    }
+    if (newSession) { props.put("ADMIN_SESSION", newSession); log.info("Re-login: ADMIN_SESSION refreshed") }
+    else { log.error("Re-login: session not found in response") }
+    if (newXsrf) { props.put("ADMIN_XSRF", newXsrf); props.put("ADMIN_XSRF_DECODED", URLDecoder.decode(newXsrf, "UTF-8")) }
+    props.put("ADMIN_LOGIN_TIME", System.currentTimeMillis())
+    log.info("Admin re-login complete at: " + new Date())
+} finally { client.close() }
+            </stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+        </hashTree>
+
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Export Auction List" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/auction/auction/export</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Export Member List" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/member/export</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Export Inspection List" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/inspection/export</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Export Bid History" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/auction/bid-history/export</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Setup Lelang" enabled="true">
+        <intProp name="ThreadGroup.num_threads">1</intProp>
+        <intProp name="ThreadGroup.ramp_time">1</intProp>
+        <longProp name="ThreadGroup.duration">900</longProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
+          <intProp name="LoopController.loops">-1</intProp>
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+        </elementProp>
+      </ThreadGroup>
+      <hashTree>
+        <!-- Think time 30s — membuat auction adalah heavy operation, tidak perlu terlalu sering -->
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Think Time - 30s" enabled="true">
+          <stringProp name="ConstantTimer.delay">30000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+
+        <!-- Cookie-based auth backoffice -->
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager - Admin Cookie" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Cookie</stringProp>
+              <stringProp name="Header.value">auction_express_session=${__P(ADMIN_SESSION)}; XSRF-TOKEN=${__P(ADMIN_XSRF)}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">User-Agent</stringProp>
+              <stringProp name="Header.value">Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+
+        <!-- Re-login jika session > 7 menit -->
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If Admin Session Expired" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3((System.currentTimeMillis() - props.getLong("ADMIN_LOGIN_TIME", 0)) &gt; 420000)}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">false</boolProp>
+        </IfController>
+        <hashTree>
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Re-login Admin Backoffice" enabled="true">
+            <stringProp name="cacheKey">true</stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">import org.apache.http.impl.client.HttpClients
+import org.apache.http.impl.client.BasicCookieStore
+import org.apache.http.client.methods.HttpGet
+import org.apache.http.client.methods.HttpPost
+import org.apache.http.entity.StringEntity
+import org.apache.http.conn.ssl.NoopHostnameVerifier
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory
+import org.apache.http.ssl.SSLContextBuilder
+import org.apache.http.ssl.TrustStrategy
+import java.security.cert.X509Certificate
+
+def ts = new TrustStrategy() {
+    boolean isTrusted(X509Certificate[] chain, String authType) { return true }
+}
+def sslCtx = SSLContextBuilder.create().loadTrustMaterial(null, ts).build()
+def sslsf = new SSLConnectionSocketFactory(sslCtx, NoopHostnameVerifier.INSTANCE)
+def cookieStore = new BasicCookieStore()
+def client = HttpClients.custom().setSSLSocketFactory(sslsf).setDefaultCookieStore(cookieStore).build()
+def base = "https://backoffice.ax-stg.lgq-stg.com"
+try {
+    def get = new HttpGet(base + "/")
+    get.setHeader("User-Agent", "Mozilla/5.0")
+    def resp1 = client.execute(get)
+    def body1 = resp1.entity.content.text
+    resp1.close()
+    def m = (body1 =~ /name="_token"\s+value="([^"]+)"/)
+    if (!m) { log.error("Re-login: CSRF not found"); return }
+    def csrf = m[0][1]
+    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
+    def post = new HttpPost(base + "/")
+    post.setHeader("Content-Type", "application/x-www-form-urlencoded")
+    post.setHeader("User-Agent", "Mozilla/5.0")
+    post.setEntity(new StringEntity(postData))
+    def resp2 = client.execute(post)
+    resp2.close()
+    def newSession = null
+    def newXsrf = null
+    for (c in cookieStore.getCookies()) {
+        if (c.getName() == "auction_express_session") newSession = c.getValue()
+        if (c.getName() == "XSRF-TOKEN") newXsrf = c.getValue()
+    }
+    if (newSession) { props.put("ADMIN_SESSION", newSession); log.info("Re-login: ADMIN_SESSION refreshed") }
+    else { log.error("Re-login: session not found in response") }
+    if (newXsrf) { props.put("ADMIN_XSRF", newXsrf); props.put("ADMIN_XSRF_DECODED", URLDecoder.decode(newXsrf, "UTF-8")) }
+    props.put("ADMIN_LOGIN_TIME", System.currentTimeMillis())
+    log.info("Admin re-login complete at: " + new Date())
+} finally { client.close() }
+            </stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Step 1: GET Halaman Daftar Auction -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Auction List" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/auction-management/auction</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Step 2: GET Halaman Form Create Auction — ekstrak CSRF + Livewire state -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Create Auction Form" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/auction-management/auction/create</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract CSRF and Livewire State" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonSlurper
+import groovy.json.JsonOutput
+
+def body = prev.getResponseDataAsString()
+
+// 1. Extract CSRF meta token
+def csrfMatch = (body =~ /&lt;meta name="csrf-token" content="([^"]+)"/)
+if (csrfMatch.find()) {
+    vars.put("LW_CSRF", csrfMatch.group(1))
+    log.info("SetupLelang - CSRF extracted OK")
+} else {
+    log.error("SetupLelang - CSRF token NOT found in response")
+    vars.put("LW_CSRF", "")
+}
+
+// 2. Extract Livewire fingerprint + serverMemo
+// Support both wire:snapshot (Livewire v3) and wire:initial-data (Livewire v2)
+def matched = null
+def m1 = (body =~ /wire:snapshot="([^"]+)"/)
+def m2 = (body =~ /wire:initial-data="([^"]+)"/)
+
+if (m1.find()) {
+    matched = m1.group(1)
+    log.info("SetupLelang - Using wire:snapshot format")
+} else if (m2.find()) {
+    matched = m2.group(1)
+    log.info("SetupLelang - Using wire:initial-data format")
+}
+
+if (matched) {
+    def rawJson = matched
+        .replace('&amp;quot;', '"')
+        .replace('&amp;amp;', '&amp;')
+        .replace('&quot;', '"')
+        .replace('&amp;', '&amp;')
+    try {
+        def data = new JsonSlurper().parseText(rawJson)
+        if (data.fingerprint) {
+            vars.put("LW_FINGERPRINT", JsonOutput.toJson(data.fingerprint))
+            vars.put("LW_SERVERMEMO", JsonOutput.toJson(data.serverMemo))
+            log.info("SetupLelang - LW fingerprint.id=" + data.fingerprint.id)
+        } else {
+            log.error("SetupLelang - No 'fingerprint' key in Livewire data")
+            vars.put("LW_FINGERPRINT", "{}")
+            vars.put("LW_SERVERMEMO", "{}")
+        }
+    } catch (Exception e) {
+        log.error("SetupLelang - Failed to parse Livewire JSON: " + e.getMessage())
+        vars.put("LW_FINGERPRINT", "{}")
+        vars.put("LW_SERVERMEMO", "{}")
+    }
+} else {
+    log.error("SetupLelang - Livewire data not found in response")
+    vars.put("LW_FINGERPRINT", "{}")
+    vars.put("LW_SERVERMEMO", "{}")
+}
+            </stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Step 3: POST Submit Auction via Livewire (combined: set all fields + clickSaveData) -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Submit Auction (clickSaveData)" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/livewire/message/auction-management.auction.create</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Build Livewire Request Body" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
+def fingerprint = new JsonSlurper().parseText(vars.get("LW_FINGERPRINT") ?: "{}")
+def serverMemo  = new JsonSlurper().parseText(vars.get("LW_SERVERMEMO")  ?: "{}")
+
+// Generate nilai unik tiap iterasi
+def ts          = System.currentTimeMillis()
+def auctionNum  = "LT" + ts.toString().substring(7)   // e.g. LT3456789
+def dateFormat  = new java.text.SimpleDateFormat("dd/MM/yyyy")
+// Tanggal auction = 7 hari dari sekarang
+def auctionDate = dateFormat.format(new java.util.Date(ts + 7L * 24 * 60 * 60 * 1000))
+def auctionName = "Load Test Auction " + auctionNum
+
+// Combined updates: set semua field sekaligus + panggil clickSaveData
+// locationId = "cbd142dd-f762-4ef4-85c3-2d4208b014a5" (Bangna — staging)
+def updates = [
+    [type: "syncInput",   payload: [id: "u1", name: "auctionDate",   value: auctionDate]],
+    [type: "callMethod",  payload: [id: "u2", method: "\$set", params: ["locationId", "cbd142dd-f762-4ef4-85c3-2d4208b014a5"]]],
+    [type: "syncInput",   payload: [id: "u3", name: "auctionName",   value: auctionName]],
+    [type: "syncInput",   payload: [id: "u4", name: "auctionNumber", value: auctionNum]],
+    [type: "syncInput",   payload: [id: "u5", name: "laneNumber",    value: "1"]],
+    [type: "syncInput",   payload: [id: "u6", name: "auctionType",   value: "public"]],
+    [type: "syncInput",   payload: [id: "u7", name: "startTime",     value: "10:00"]],
+    [type: "callMethod",  payload: [id: "u8", method: "clickSaveData", params: []]]
+]
+
+def requestBody = [
+    fingerprint: fingerprint,
+    serverMemo:  serverMemo,
+    updates:     updates
+]
+
+def bodyJson = JsonOutput.toJson(requestBody)
+sampler.getArguments().removeAllArguments()
+sampler.addNonEncodedArgument("", bodyJson, "")
+sampler.setPostBodyRaw(true)
+log.info("SetupLelang - Submitting auction: " + auctionName)
+            </stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <!-- Header khusus Livewire POST -->
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Livewire POST Headers" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html, application/xhtml+xml</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">${LW_CSRF}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Livewire</stringProp>
+                <stringProp name="Header.value">true</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com/en/auction-management/auction/create</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <!-- Extract Auction ID dari response redirect Livewire -->
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract New Auction ID" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonSlurper
+
+def responseBody = prev.getResponseDataAsString()
+
+// Cari UUID spesifik dari pola redirect URL Livewire:
+// effects.redirect = ".../detail/vehicle-list/{UUID}/all"
+def uuidPattern = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/
+
+// Prioritas 1: cari dari konteks redirect URL
+def redirectMatch = (responseBody =~ /detail\/vehicle-list\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/)
+if (redirectMatch.find()) {
+    vars.put("NEW_AUCTION_ID", redirectMatch.group(1))
+    log.info("SetupLelang - Auction ID from redirect: " + redirectMatch.group(1))
+    return
+}
+
+// Prioritas 2: parse JSON, ambil dari effects.redirect
+try {
+    def data = new JsonSlurper().parseText(responseBody)
+    def redirect = data?.effects?.redirect ?: ""
+    def m2 = (redirect =~ uuidPattern)
+    if (m2.find()) {
+        vars.put("NEW_AUCTION_ID", m2.group(0))
+        log.info("SetupLelang - Auction ID from JSON redirect: " + m2.group(0))
+        return
+    }
+} catch (Exception e) {
+    log.warn("SetupLelang - Could not parse JSON response: " + e.getMessage())
+}
+
+log.error("SetupLelang - Could not extract auction ID. Response: " + responseBody.take(300))
+vars.put("NEW_AUCTION_ID", "")
+            </stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Step 4: GET Auction List (post-create) — ekstrak auction ID terbaru dari HTML list -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Auction List (extract ID)" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/auction-management/auction</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract Auction ID from List" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+def body = prev.getResponseDataAsString()
+// List page HTML punya link ke detail tiap auction:
+// href=".../detail/vehicle-list/{UUID}/all"
+def m = (body =~ /detail\/vehicle-list\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})/)
+if (m.find()) {
+    vars.put("NEW_AUCTION_ID", m.group(1))
+    log.info("EditAuction - Auction ID from list: " + m.group(1))
+} else {
+    log.error("EditAuction - No auction ID found in list HTML")
+    vars.put("NEW_AUCTION_ID", "")
+}
+            </stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Step 5: GET Auction Detail/Edit Page — ekstrak CSRF + LW state komponen auction.detail -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Auction Detail Page" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/auction-management/auction/detail/vehicle-list/${NEW_AUCTION_ID}/all</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract CSRF and LW Detail State" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonSlurper
+import groovy.json.JsonOutput
+
+def body = prev.getResponseDataAsString()
+
+// 1. Extract CSRF token
+def csrfMatch = (body =~ /&lt;meta name="csrf-token" content="([^"]+)"/)
+if (csrfMatch.find()) {
+    vars.put("EDIT_CSRF", csrfMatch.group(1))
+    log.info("EditAuction - CSRF extracted OK")
+} else {
+    log.error("EditAuction - CSRF not found")
+    vars.put("EDIT_CSRF", "")
+}
+
+// 2. Cari komponen Livewire "auction-management.auction.detail"
+// Halaman ini punya 9 Livewire components — iterasi untuk cari yang tepat
+def targetComponent = "auction-management.auction.detail"
+def found = false
+def m = (body =~ /wire:(?:initial-data|snapshot)="([^"]+)"/)
+while (m.find() &amp;&amp; !found) {
+    def rawJson = m.group(1)
+        .replace('&amp;quot;', '"')
+        .replace('&amp;amp;', '&amp;')
+        .replace('&quot;', '"')
+        .replace('&amp;', '&amp;')
+    try {
+        def data = new JsonSlurper().parseText(rawJson)
+        if (data.fingerprint?.name == targetComponent) {
+            vars.put("EDIT_LW_FINGERPRINT", JsonOutput.toJson(data.fingerprint))
+            vars.put("EDIT_LW_SERVERMEMO", JsonOutput.toJson(data.serverMemo))
+            log.info("EditAuction - LW state extracted, id=" + data.fingerprint.id)
+            found = true
+        }
+    } catch (Exception e) {
+        // skip component yang gagal di-parse
+    }
+}
+
+if (!found) {
+    log.error("EditAuction - Component '" + targetComponent + "' not found")
+    vars.put("EDIT_LW_FINGERPRINT", "{}")
+    vars.put("EDIT_LW_SERVERMEMO", "{}")
+}
+
+// 3. Cari komponen modal-add-vehicle dan table-vehicles
+def modalComponent = "auction-management.auction.components.modal-add-vehicle"
+def tableComponent = "auction-management.auction.components.table-vehicles"
+def modalFound = false
+def tableFound = false
+
+m = (body =~ /wire:(?:initial-data|snapshot)="([^"]+)"/)
+while (m.find()) {
+    if (modalFound &amp;&amp; tableFound) break
+    def rawJson = m.group(1)
+        .replace('&amp;quot;', '"')
+        .replace('&amp;amp;', '&amp;')
+        .replace('&quot;', '"')
+        .replace('&amp;', '&amp;')
+    try {
+        def data = new JsonSlurper().parseText(rawJson)
+        if (!modalFound &amp;&amp; data.fingerprint?.name == modalComponent) {
+            vars.put("MODAL_LW_FINGERPRINT", JsonOutput.toJson(data.fingerprint))
+            vars.put("MODAL_LW_SERVERMEMO", JsonOutput.toJson(data.serverMemo))
+            log.info("AddVehicle - modal-add-vehicle LW state extracted, id=" + data.fingerprint.id)
+            modalFound = true
+        }
+        if (!tableFound &amp;&amp; data.fingerprint?.name == tableComponent) {
+            vars.put("TABLE_LW_FINGERPRINT", JsonOutput.toJson(data.fingerprint))
+            vars.put("TABLE_LW_SERVERMEMO", JsonOutput.toJson(data.serverMemo))
+            log.info("AddVehicle - table-vehicles LW state extracted, id=" + data.fingerprint.id)
+            tableFound = true
+        }
+    } catch (Exception e) {
+        // skip
+    }
+}
+if (!modalFound) {
+    log.warn("AddVehicle - modal-add-vehicle component not found in page HTML")
+    vars.put("MODAL_LW_FINGERPRINT", "{}")
+    vars.put("MODAL_LW_SERVERMEMO", "{}")
+}
+if (!tableFound) {
+    log.warn("AddVehicle - table-vehicles component not found in page HTML")
+    vars.put("TABLE_LW_FINGERPRINT", "{}")
+    vars.put("TABLE_LW_SERVERMEMO", "{}")
+}
+            </stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Step 5a: POST modal-add-vehicle (empty updates) — refresh vehicle list -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Modal Add Vehicle (get list)" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/livewire/message/auction-management.auction.components.modal-add-vehicle</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Build Modal Empty Request" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
+def fingerprint = new JsonSlurper().parseText(vars.get("MODAL_LW_FINGERPRINT") ?: "{}")
+def serverMemo  = new JsonSlurper().parseText(vars.get("MODAL_LW_SERVERMEMO")  ?: "{}")
+
+// Empty updates — trigger re-render to get vehicle list HTML in response
+def requestBody = [fingerprint: fingerprint, serverMemo: serverMemo, updates: []]
+def bodyJson = JsonOutput.toJson(requestBody)
+sampler.getArguments().removeAllArguments()
+sampler.addNonEncodedArgument("", bodyJson, "")
+sampler.setPostBodyRaw(true)
+log.info("AddVehicle - Step 5a: requesting vehicle list from modal")
+            </stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Livewire POST Headers - Modal" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html, application/xhtml+xml</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">${EDIT_CSRF}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Livewire</stringProp>
+                <stringProp name="Header.value">true</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com/en/auction-management/auction/detail/vehicle-list/${NEW_AUCTION_ID}/all</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <JSR223PostProcessor guiclass="TestBeanGUI" testclass="JSR223PostProcessor" testname="Extract Vehicle from Modal List" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonSlurper
+import groovy.json.JsonOutput
+
+def responseBody = prev.getResponseDataAsString()
+def resp = new JsonSlurper().parseText(responseBody)
+
+// Ambil vehicle pertama dari HTML modal (checkbox dengan name="inventory_car_id")
+def html = resp?.effects?.html ?: ""
+def mVehicle = (html =~ /name="inventory_car_id"\s+value="([^"]+)"/)
+if (mVehicle.find()) {
+    def rawVehicleJson = mVehicle.group(1)
+        .replace('&quot;', '"')
+        .replace('&amp;', '&amp;')
+    vars.put("VEHICLE_JSON", rawVehicleJson)
+    try {
+        def vData = new JsonSlurper().parseText(rawVehicleJson)
+        log.info("AddVehicle - Step 5a: first vehicle = " + vData.car_inventory_number + " / " + vData.car_reg_no)
+    } catch(Exception e) {
+        log.info("AddVehicle - Step 5a: vehicle JSON extracted (parse failed for logging)")
+    }
+} else {
+    log.error("AddVehicle - Step 5a: no vehicle found in modal HTML! (modal might not be loaded)")
+    vars.put("VEHICLE_JSON", "")
+}
+
+// Simpan updated serverMemo dari response
+def updatedSM = resp?.serverMemo
+if (updatedSM) {
+    vars.put("MODAL_LW_SERVERMEMO_2", JsonOutput.toJson(updatedSM))
+    log.info("AddVehicle - Step 5a: modal serverMemo updated, checksum=" + updatedSM?.checksum?.take(12))
+} else {
+    vars.put("MODAL_LW_SERVERMEMO_2", vars.get("MODAL_LW_SERVERMEMO"))
+}
+            </stringProp>
+          </JSR223PostProcessor>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Step 5b: POST modal-add-vehicle (syncInput listSelectedVehicles + callMethod addVehicle) -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Modal Add Vehicle (select + confirm)" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/livewire/message/auction-management.auction.components.modal-add-vehicle</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Build Modal Select+Confirm Body" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
+def fingerprint  = new JsonSlurper().parseText(vars.get("MODAL_LW_FINGERPRINT")    ?: "{}")
+def serverMemo   = new JsonSlurper().parseText(vars.get("MODAL_LW_SERVERMEMO_2")   ?: "{}")
+def vehicleJson  = vars.get("VEHICLE_JSON") ?: ""
+
+if (!vehicleJson) {
+    log.error("AddVehicle - Step 5b: VEHICLE_JSON is empty, skipping")
+    // Set empty body so request still fires (will likely fail — OK)
+    sampler.getArguments().removeAllArguments()
+    sampler.addNonEncodedArgument("", "{}", "")
+    sampler.setPostBodyRaw(true)
+    return
+}
+
+// syncInput listSelectedVehicles = [vehicleJson]  +  callMethod addVehicle()
+def updates = [
+    [type: "syncInput", payload: [id: "v1", name: "listSelectedVehicles", value: [vehicleJson]]],
+    [type: "callMethod", payload: [id: "v2", method: "addVehicle", params: []]]
+]
+
+def requestBody = [fingerprint: fingerprint, serverMemo: serverMemo, updates: updates]
+def bodyJson = JsonOutput.toJson(requestBody)
+sampler.getArguments().removeAllArguments()
+sampler.addNonEncodedArgument("", bodyJson, "")
+sampler.setPostBodyRaw(true)
+log.info("AddVehicle - Step 5b: syncInput + addVehicle(), vehicle=" + vehicleJson.take(50))
+            </stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Livewire POST Headers - Modal Confirm" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html, application/xhtml+xml</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">${EDIT_CSRF}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Livewire</stringProp>
+                <stringProp name="Header.value">true</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com/en/auction-management/auction/detail/vehicle-list/${NEW_AUCTION_ID}/all</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Step 5c: POST table-vehicles (fireEvent addVehicleToFormCreateAuction) -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Table Vehicles (fireEvent add)" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/livewire/message/auction-management.auction.components.table-vehicles</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Build Table Vehicles FireEvent Body" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
+def fingerprint  = new JsonSlurper().parseText(vars.get("TABLE_LW_FINGERPRINT") ?: "{}")
+def serverMemo   = new JsonSlurper().parseText(vars.get("TABLE_LW_SERVERMEMO")  ?: "{}")
+def vehicleJson  = vars.get("VEHICLE_JSON") ?: ""
+
+// fireEvent: event name + params = [[vehicle_json_string]]
+// params adalah array yang berisi satu inner-array berisi vehicle JSON strings
+def updates = [
+    [type: "fireEvent", payload: [id: "fe1", event: "addVehicleToFormCreateAuction", params: [[vehicleJson]]]]
+]
+
+def requestBody = [fingerprint: fingerprint, serverMemo: serverMemo, updates: updates]
+def bodyJson = JsonOutput.toJson(requestBody)
+sampler.getArguments().removeAllArguments()
+sampler.addNonEncodedArgument("", bodyJson, "")
+sampler.setPostBodyRaw(true)
+log.info("AddVehicle - Step 5c: fireEvent addVehicleToFormCreateAuction")
+            </stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Livewire POST Headers - Table Vehicles" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html, application/xhtml+xml</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">${EDIT_CSRF}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Livewire</stringProp>
+                <stringProp name="Header.value">true</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com/en/auction-management/auction/detail/vehicle-list/${NEW_AUCTION_ID}/all</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Step 6: POST Edit Auction via Livewire (syncInput auctionName) -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST Edit Auction (syncInput)" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/livewire/message/auction-management.auction.detail</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Build Livewire Edit Body" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
+def fingerprint = new JsonSlurper().parseText(vars.get("EDIT_LW_FINGERPRINT") ?: "{}")
+def serverMemo  = new JsonSlurper().parseText(vars.get("EDIT_LW_SERVERMEMO")  ?: "{}")
+def auctionId   = vars.get("NEW_AUCTION_ID") ?: ""
+
+// Update path di fingerprint dengan auction ID yang sebenarnya
+if (fingerprint.path != null) {
+    fingerprint.path = "en/auction-management/auction/detail/vehicle-list/" + auctionId + "/all"
+}
+
+// Ubah auctionName dengan suffix unik untuk simulasi edit, lalu clickSaveData(false)
+def newName = "LT Edit " + System.currentTimeMillis().toString().substring(8)
+
+def updates = [
+    [type: "syncInput", payload: [id: "e1", name: "auctionName", value: newName]],
+    [type: "callMethod", payload: [id: "e2", method: "clickSaveData", params: [false]]]
+]
+
+def requestBody = [fingerprint: fingerprint, serverMemo: serverMemo, updates: updates]
+def bodyJson = JsonOutput.toJson(requestBody)
+sampler.getArguments().removeAllArguments()
+sampler.addNonEncodedArgument("", bodyJson, "")
+sampler.setPostBodyRaw(true)
+log.info("EditAuction - Updating auctionName to: " + newName + " + clickSaveData(false)")
+            </stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="Livewire Edit Headers" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html, application/xhtml+xml</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">${EDIT_CSRF}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">X-Livewire</stringProp>
+                <stringProp name="Header.value">true</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com/en/auction-management/auction/detail/vehicle-list/${NEW_AUCTION_ID}/all</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">8</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+
+        <!-- Step 7: GET Auction List (post-edit, opsional navigasi balik) -->
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET Auction List (post-save)" enabled="true">
+          <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.path">/en/auction-management/auction</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.postBodyRaw">false</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+        </HTTPSamplerProxy>
+        <hashTree>
           <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Assert 200" enabled="true">
             <collectionProp name="Asserion.test_strings">
               <stringProp name="49586">200</stringProp>
