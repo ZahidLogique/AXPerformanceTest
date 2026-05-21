@@ -9,6 +9,13 @@ users_credentials.csv
 # Customer data
 List Customer/
 
+# HAR files & Curl data (contain sensitive tokens/credentials/AWS keys)
+HAR/
+Curl Data/
+
 # OS files
 .DS_Store
 Thumbs.db
+
+# Claude Code internal
+.claude/
