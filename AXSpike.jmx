@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="AX Auction - Spike Test (100u Ramp60s Loop1)">
@@ -92,12 +92,12 @@
           <!-- AUCTION_DATE / MONTH / YEAR: digunakan di Phase 1 schedule & catalog -->
           <elementProp name="AUCTION_DATE" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_DATE</stringProp>
-            <stringProp name="Argument.value">2026-04-28</stringProp>
+            <stringProp name="Argument.value">2026-05-26</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUCTION_MONTH" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_MONTH</stringProp>
-            <stringProp name="Argument.value">4</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUCTION_YEAR" elementType="Argument">
@@ -160,7 +160,7 @@
       <hashTree>
         <!-- CSV Credentials khusus TG1 -->
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Credentials (TG1 only)" enabled="true">
-          <stringProp name="filename">C:\JMeter\AX\users_credentials.csv</stringProp>
+          <stringProp name="filename">C:\Tools\apache-jmeter-5.6.3\AX\users_credentials.csv</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="variableNames">USERNAME,PASSWORD,CAPTCHA_KEY,NIPL</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
@@ -179,7 +179,7 @@
           <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Init tokens.csv" enabled="true">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="script">
-def tokenFile = new File("C:/JMeter/AX/tokens.csv")
+def tokenFile = new File("C:/Tools/apache-jmeter-5.6.3/AX/tokens.csv")
 tokenFile.text = "USERNAME,TOKEN,USER_ID,NIPL\n"
 log.info("tokens.csv initialized")
             </stringProp>
@@ -256,7 +256,7 @@ if (token != null &amp;&amp; token != "TOKEN_NOT_FOUND" &amp;&amp; token.contain
         def json = new JsonSlurper().parseText(payload)
         def userId = json.sub as String
 
-        new File("C:/JMeter/AX/tokens.csv").append("${username},${token},${userId},${nipl}\n")
+        new File("C:/Tools/apache-jmeter-5.6.3/AX/tokens.csv").append("${username},${token},${userId},${nipl}\n")
         log.info("[TG1] Token saved: " + username + " | USER_ID: " + userId)
     } catch (Exception e) {
         log.error("[TG1] Gagal decode JWT untuk: " + username + " | " + e.getMessage())
@@ -290,7 +290,7 @@ if (token != null &amp;&amp; token != "TOKEN_NOT_FOUND" &amp;&amp; token.contain
 
         <!-- TG2: Baca TOKEN, USER_ID, NIPL dari tokens.csv hasil TG1 -->
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Tokens (dari TG1 Pre-Login)" enabled="true">
-          <stringProp name="filename">C:\JMeter\AX\tokens.csv</stringProp>
+          <stringProp name="filename">C:\Tools\apache-jmeter-5.6.3\AX\tokens.csv</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="variableNames">USERNAME,TOKEN,USER_ID,NIPL</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
@@ -921,6 +921,13 @@ prev.setSampleLabel("[BidLoop] Iter-" + loopNum + " Pacing")
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
+              <elementProp name="limit" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">limit</stringProp>
+                <stringProp name="Argument.value">100</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
             </collectionProp>
           </elementProp>
         </HTTPSamplerProxy>
@@ -1309,6 +1316,13 @@ log.info("parent_bid_id: " + vars.get("PARENT_BID_ID"))
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
+              <elementProp name="limit" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">limit</stringProp>
+                <stringProp name="Argument.value">100</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
             </collectionProp>
           </elementProp>
         </HTTPSamplerProxy>
@@ -1468,7 +1482,7 @@ if (firstBid) {
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">C:/JMeter/AX/results_spike_${__time(yyyyMMdd_HHmmss)}.jtl</stringProp>
+          <stringProp name="filename">C:/Tools/apache-jmeter-5.6.3/AX/results_spike_${__time(yyyyMMdd_HHmmss)}.jtl</stringProp>
         </ResultCollector>
         <hashTree/>
 

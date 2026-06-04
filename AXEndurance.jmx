@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="AX Auction - Endurance Test (100u Ramp200s 30min)">
@@ -92,7 +92,7 @@
           <!-- AUCTION_DATE / MONTH / YEAR: digunakan di Phase 1 schedule & catalog -->
           <elementProp name="AUCTION_DATE" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_DATE</stringProp>
-            <stringProp name="Argument.value">2026-05-08</stringProp>
+            <stringProp name="Argument.value">2026-05-26</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUCTION_MONTH" elementType="Argument">
@@ -160,7 +160,7 @@
       <hashTree>
         <!-- CSV Credentials khusus TG1 -->
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Credentials (TG1 only)" enabled="true">
-          <stringProp name="filename">C:\JMeter\AX\users_credentials.csv</stringProp>
+          <stringProp name="filename">C:\Tools\apache-jmeter-5.6.3\AX\users_credentials.csv</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="variableNames">USERNAME,PASSWORD,CAPTCHA_KEY,NIPL</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
@@ -179,7 +179,7 @@
           <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Init tokens.csv" enabled="true">
             <stringProp name="scriptLanguage">groovy</stringProp>
             <stringProp name="script">
-def tokenFile = new File("C:/JMeter/AX/tokens.csv")
+def tokenFile = new File("C:/Tools/apache-jmeter-5.6.3/AX/tokens.csv")
 tokenFile.text = "USERNAME,TOKEN,USER_ID,NIPL\n"
 log.info("tokens.csv initialized")
             </stringProp>
@@ -256,7 +256,7 @@ if (token != null &amp;&amp; token != "TOKEN_NOT_FOUND" &amp;&amp; token.contain
         def json = new JsonSlurper().parseText(payload)
         def userId = json.sub as String
 
-        new File("C:/JMeter/AX/tokens.csv").append("${username},${token},${userId},${nipl}\n")
+        new File("C:/Tools/apache-jmeter-5.6.3/AX/tokens.csv").append("${username},${token},${userId},${nipl}\n")
         log.info("[TG1] Token saved: " + username + " | USER_ID: " + userId)
     } catch (Exception e) {
         log.error("[TG1] Gagal decode JWT untuk: " + username + " | " + e.getMessage())
@@ -278,7 +278,7 @@ if (token != null &amp;&amp; token != "TOKEN_NOT_FOUND" &amp;&amp; token.contain
       <!-- ═══════════════════════════════════════════════════════════════════ -->
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="[TEST] Endurance - 100u Ramp200s 30min" enabled="true">
         <stringProp name="ThreadGroup.num_threads">100</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">200</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">300</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController">
@@ -293,7 +293,7 @@ if (token != null &amp;&amp; token != "TOKEN_NOT_FOUND" &amp;&amp; token.contain
 
         <!-- TG2: Baca TOKEN, USER_ID, NIPL dari tokens.csv hasil TG1 -->
         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Tokens (dari TG1 Pre-Login)" enabled="true">
-          <stringProp name="filename">C:\JMeter\AX\tokens.csv</stringProp>
+          <stringProp name="filename">C:\Tools\apache-jmeter-5.6.3\AX\tokens.csv</stringProp>
           <stringProp name="fileEncoding">UTF-8</stringProp>
           <stringProp name="variableNames">USERNAME,TOKEN,USER_ID,NIPL</stringProp>
           <boolProp name="ignoreFirstLine">true</boolProp>
@@ -307,10 +307,14 @@ if (token != null &amp;&amp; token != "TOKEN_NOT_FOUND" &amp;&amp; token.contain
 
         <!-- ═══════════════════════════════════════════════════════════ -->
         <!--  PHASE 1: Join Auction HTTP Flow — hanya jalan 1x         -->
-        <!--  Iterasi 2-5 langsung ke Phase 2 (bid) tanpa reload page  -->
+        <!--  Fix: pakai IfController + flag PHASE1_DONE               -->
+        <!--  karena OnceOnlyController reset saat continue_forever     -->
         <!-- ═══════════════════════════════════════════════════════════ -->
-        <OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Once Only - Phase 1 HTTP (1x per thread)" enabled="true">
-        </OnceOnlyController>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="If - Phase 1 HTTP (1x per thread)" enabled="true">
+          <stringProp name="IfController.condition">${__jexl3(vars.get("PHASE1_DONE") == null)}</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+          <boolProp name="IfController.useExpression">true</boolProp>
+        </IfController>
         <hashTree>
           <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Phase 1 Pacing - 200ms" enabled="true">
             <stringProp name="ConstantTimer.delay">200</stringProp>
@@ -848,8 +852,16 @@ try {
           </HTTPSamplerProxy>
           <hashTree/>
 
+          <!-- Set flag PHASE1_DONE agar Phase 1 tidak jalan lagi di iterasi berikutnya -->
+          <JSR223Sampler guiclass="TestBeanGUI" testclass="JSR223Sampler" testname="Set PHASE1_DONE Flag" enabled="true">
+            <stringProp name="scriptLanguage">groovy</stringProp>
+            <stringProp name="script">vars.put("PHASE1_DONE", "true")
+log.info("[Phase 1] Done flag set for thread: " + ctx.getThread().getThreadName())</stringProp>
+          </JSR223Sampler>
+          <hashTree/>
+
         </hashTree>
-        <!-- end Once Only - Phase 1 -->
+        <!-- end If - Phase 1 -->
 
         <!-- ═══════════════════════════════════════════════════════════════════ -->
         <!--  LOOP PACING: jeda antar iterasi bid                              -->
@@ -921,6 +933,13 @@ prev.setSampleLabel("[BidLoop] Iter-" + loopNum + " Pacing")
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.name">auction_lot</stringProp>
                 <stringProp name="Argument.value">${AUCTION_LOT}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="limit" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">limit</stringProp>
+                <stringProp name="Argument.value">100</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1312,6 +1331,13 @@ log.info("parent_bid_id: " + vars.get("PARENT_BID_ID"))
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
+              <elementProp name="limit" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.name">limit</stringProp>
+                <stringProp name="Argument.value">100</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
             </collectionProp>
           </elementProp>
         </HTTPSamplerProxy>
@@ -1471,7 +1497,7 @@ if (firstBid) {
               <connectTime>true</connectTime>
             </value>
           </objProp>
-          <stringProp name="filename">C:/JMeter/AX/endurance_100u.jtl</stringProp>
+          <stringProp name="filename">C:/Tools/apache-jmeter-5.6.3/AX/endurance_100u.jtl</stringProp>
         </ResultCollector>
         <hashTree/>
 

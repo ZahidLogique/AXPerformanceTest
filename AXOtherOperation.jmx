@@ -403,7 +403,7 @@ if (token &amp;&amp; token != "TOKEN_NOT_FOUND") {
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Admin Download Price" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.duration">2100</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -608,7 +608,7 @@ try {
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Auction Download Catalog" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.duration">2100</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -774,7 +774,7 @@ try {
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Admin Register mobil" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.duration">2100</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -1188,7 +1188,7 @@ try {
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Admin Payment" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.duration">2100</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -1486,7 +1486,7 @@ log.info("Submit Payment debug saved")
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Web Report" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.duration">2100</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -1642,7 +1642,7 @@ log.info("Submit Payment debug saved")
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Inspection" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.duration">2100</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -3859,7 +3859,7 @@ new File("C:/Tools/apache-jmeter-5.6.3/AX/debug_inspection_response.txt").text =
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Admin Export Vehicle" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.duration">2100</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -4102,7 +4102,7 @@ new File("C:/Tools/apache-jmeter-5.6.3/AX/debug_export_vehicle.txt").text = "COD
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Admin Export Other" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.duration">2100</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -4786,7 +4786,7 @@ if (matched) {
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Setup Lelang" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.duration">2100</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -5856,7 +5856,7 @@ log.info("EditAuction - Updating auctionName to: " + newName + " + clickSaveData
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Observer 1" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.duration">2100</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -6226,7 +6226,7 @@ log.info("EditAuction - Updating auctionName to: " + newName + " + clickSaveData
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Register New Vehicle" enabled="true">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">1</intProp>
-        <longProp name="ThreadGroup.duration">300</longProp>
+        <longProp name="ThreadGroup.duration">2100</longProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">false</boolProp>
         <boolProp name="ThreadGroup.scheduler">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
