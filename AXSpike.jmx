@@ -276,13 +276,13 @@ if (token != null &amp;&amp; token != "TOKEN_NOT_FOUND" &amp;&amp; token.contain
       <!-- Phase 1 (HTTP setup) hanya 1x via OnceOnly                       -->
       <!-- Phase 2 (WS bid cycle) repeat 5x per user                        -->
       <!-- ═══════════════════════════════════════════════════════════════════ -->
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="[TEST] Spike - 100u Ramp60s Loop1" enabled="true">
-        <stringProp name="ThreadGroup.num_threads">100</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="[TEST] Spike - ${__P(threads,100)}u Ramp${__P(rampup,60)}s Loop${__P(loops,1)}" enabled="true">
+        <stringProp name="ThreadGroup.num_threads">${__P(threads,100)}</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">${__P(rampup,60)}</stringProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController">
-          <stringProp name="LoopController.loops">1</stringProp>
+          <stringProp name="LoopController.loops">${__P(loops,1)}</stringProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
       </ThreadGroup>
