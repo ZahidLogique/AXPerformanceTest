@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AX Auction — Pre-Deployment Simulation Plan</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 11pt;
+    color: #1a1a1a;
+    background: #fff;
+    padding: 40px 50px;
+  }
+
+  /* Header */
+  .header {
+    background: #1F4E78;
+    color: #fff;
+    padding: 28px 32px;
+    border-radius: 6px;
+    margin-bottom: 32px;
+  }
+  .header h1 { font-size: 20pt; font-weight: 700; margin-bottom: 6px; }
+  .header .subtitle { font-size: 12pt; opacity: 0.85; margin-bottom: 12px; }
+  .header .meta { font-size: 10pt; opacity: 0.75; display: flex; gap: 32px; }
+
+  /* Section */
+  .section { margin-bottom: 30px; }
+  .section-title {
+    font-size: 13pt;
+    font-weight: 700;
+    color: #1F4E78;
+    border-bottom: 2px solid #1F4E78;
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+  }
+  .section-num {
+    background: #1F4E78;
+    color: #fff;
+    border-radius: 50%;
+    width: 24px; height: 24px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 10pt; font-weight: 700;
+    margin-right: 8px;
+  }
+
+  /* How it runs */
+  .how-box {
+    background: #EEF4FB;
+    border-left: 4px solid #1F4E78;
+    padding: 16px 20px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 12px;
+  }
+  .how-box .component { font-weight: 700; color: #1F4E78; margin-bottom: 4px; }
+  .how-box p { color: #333; line-height: 1.6; }
+  .how-note {
+    font-size: 10pt;
+    color: #555;
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5pt;
+  }
+  thead tr {
+    background: #1F4E78;
+    color: #fff;
+  }
+  thead th {
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 700;
+  }
+  thead th:first-child { border-radius: 4px 0 0 0; }
+  thead th:last-child  { border-radius: 0 4px 0 0; }
+  tbody tr:nth-child(even) { background: #F0F5FB; }
+  tbody tr:hover { background: #DDE8F5; }
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #D0D9E6;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  tbody td:first-child { font-weight: 600; color: #1F4E78; }
+
+  /* Spec table */
+  .spec-table tbody td:first-child { color: #333; font-weight: 700; width: 180px; }
+  .spec-table tbody td { text-align: center; }
+  .spec-table tbody td:first-child { text-align: left; }
+
+  /* Test table highlight */
+  .test-name { font-weight: 700; color: #1F4E78; }
+  .pass-tag {
+    display: inline-block;
+    background: #E2F0D9;
+    color: #375623;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 9.5pt;
+    font-weight: 600;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 36px;
+    padding-top: 14px;
+    border-top: 1px solid #D0D9E6;
+    font-size: 9.5pt;
+    color: #888;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media print {
+    body { padding: 24px 32px; }
+    .header { border-radius: 4px; }
+    tbody tr:hover { background: inherit; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+  <h1>AX Auction &mdash; Pre-Deployment Simulation Plan</h1>
+  <div class="subtitle">Performance Test Execution Plan</div>
+  <div class="meta">
+    <span>Date: 29 June 2026</span>
+    <span>Environment: Staging</span>
+    <span>System: api-gateway.ax-stg.lgq-stg.com</span>
+  </div>
+</div>
+
+<!-- Section 1: How Tests Are Executed -->
+<div class="section">
+  <div class="section-title"><span class="section-num">1</span>How Tests Are Executed</div>
+  <p style="margin-bottom:12px; color:#444; line-height:1.7;">
+    Each test runs <strong>two components simultaneously</strong> to reflect actual production conditions
+    where users perform different activities at the same time.
+  </p>
+
+  <div class="how-box">
+    <div class="component">Main Test</div>
+    <p>Simulates users performing the full bidding flow:<br>
+    Login &rarr; Browse Catalog &rarr; Enter Auction Room &rarr; Place Bid &rarr; Receive Broadcast</p>
+  </div>
+
+  <div class="how-box">
+    <div class="component">AXOtherOperation (Background)</div>
+    <p>Simulates other users doing general activities such as browsing the catalog, checking the auction
+    schedule, and viewing notifications — running in parallel to replicate real production load where
+    not all users are actively bidding.</p>
+  </div>
+
+  <p class="how-note">&#9432; Both components run at the same time throughout the entire duration of each test.</p>
+</div>
+
+<!-- Section 2: Server Specification -->
+<div class="section">
+  <div class="section-title"><span class="section-num">2</span>Server Specification</div>
+  <table class="spec-table">
+    <thead>
+      <tr>
+        <th>Component</th>
+        <th>Current Staging</th>
+        <th>Upgraded Staging (Prod-Spec)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>App Server</td>
+        <td>2 Core &nbsp;|&nbsp; 4 GB RAM</td>
+        <td>TBD (match production)</td>
+      </tr>
+      <tr>
+        <td>Database</td>
+        <td>4 Core &nbsp;|&nbsp; 16 GB RAM</td>
+        <td>TBD (match production)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Section 3: Test Execution Plan -->
+<div class="section">
+  <div class="section-title"><span class="section-num">3</span>Test Execution Plan</div>
+  <p style="margin-bottom:12px; color:#444; line-height:1.7;">
+    Tests must be executed in order. Each test builds on the confidence established by the previous one.
+    The upgraded staging config uses higher user counts because the additional server resources are
+    expected to support a higher capacity.
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:4%">#</th>
+        <th style="width:14%">Test Type</th>
+        <th style="width:24%">Current Staging Config</th>
+        <th style="width:24%">Upgraded Staging Config<br><span style="font-weight:400; font-size:9.5pt; opacity:0.85">(Prod-Spec)</span></th>
+        <th style="width:34%">Pass Criteria</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td><span class="test-name">Load Test</span></td>
+        <td>120 users, ramp-up 300s, 1 loop</td>
+        <td>200 users, ramp-up 300s, 1 loop</td>
+        <td><span class="pass-tag">Error rate 0%</span><br>Avg response &lt; 200ms</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td><span class="test-name">Loop Test</span></td>
+        <td>60 users, ramp-up 300s,<br>50 loops (~15 min)</td>
+        <td>100 users, ramp-up 300s,<br>50 loops (~15 min)</td>
+        <td><span class="pass-tag">Error rate 0%</span><br>Response time consistent per loop</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td><span class="test-name">Spike Test</span></td>
+        <td>Phase 1: 10&rarr;120 users<br>Phase 2: 0&rarr;120 users sudden spike</td>
+        <td>Phase 1: 10&rarr;200 users<br>Phase 2: 0&rarr;200 users sudden spike</td>
+        <td><span class="pass-tag">Error rate 0%</span><br>Recovery &lt; 1 minute after spike</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td><span class="test-name">Endurance Test</span></td>
+        <td>60 users, ramp-up 300s,<br>200 loops (~45 min)</td>
+        <td>100 users, ramp-up 300s,<br>200 loops (~45 min)</td>
+        <td><span class="pass-tag">Error rate &lt; 0.1%</span><br>Response time stable throughout</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td><span class="test-name">Stress Test</span></td>
+        <td>150 users, ramp-up 60s, 1 loop</td>
+        <td>200 users, ramp-up 60s, 1 loop</td>
+        <td><span class="pass-tag">Breaking point &ge; 200 users</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <span>AX Auction &mdash; Pre-Deployment Simulation Plan</span>
+  <span>Generated: 29 June 2026 &nbsp;|&nbsp; LOGIQUE Performance Testing</span>
+</div>
+
+</body>
+</html>

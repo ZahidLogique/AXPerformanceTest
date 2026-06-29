@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Spike Test Report — AXSpike</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; background: #f5f6fa; color: #2d3436; font-size: 14px; }
+  .container { max-width: 960px; margin: 40px auto; padding: 0 20px 60px; }
+
+  .header { background: #2c3e50; color: white; border-radius: 10px; padding: 28px 32px; margin-bottom: 28px; }
+  .header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+  .header p { font-size: 13px; color: #b2bec3; }
+
+  .section { background: white; border-radius: 10px; padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+  .section h2 { font-size: 15px; font-weight: 700; color: #2c3e50; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #f0f0f0; }
+
+  .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .info-card { background: #f8f9fa; border-radius: 8px; padding: 14px 16px; }
+  .info-card .label { font-size: 11px; color: #636e72; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+  .info-card .value { font-size: 16px; font-weight: 700; color: #2c3e50; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead th { background: #2c3e50; color: white; padding: 9px 10px; text-align: center; font-weight: 600; font-size: 12px; }
+  thead th:first-child { text-align: left; }
+  tbody tr:nth-child(even) { background: #f8f9fa; }
+  tbody td { padding: 7px 10px; border-bottom: 1px solid #f0f0f0; text-align: center; }
+  tbody td:first-child { text-align: left; font-size: 12px; color: #2d3436; }
+  tbody tr:hover { background: #eaf4ff; }
+  .warn { color: #e17055; }
+  .section-divider td { background: #f0f3f7 !important; font-weight: 700; font-size: 11px; color: #636e72; text-transform: uppercase; letter-spacing: .5px; padding: 6px 10px; text-align: left !important; }
+
+  .summary-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .stat { background: #f8f9fa; border-radius: 8px; padding: 14px; text-align: center; }
+  .stat .num { font-size: 20px; font-weight: 700; color: #2c3e50; }
+  .stat .lbl { font-size: 11px; color: #636e72; margin-top: 3px; }
+  .stat.green .num { color: #00b894; }
+  .stat.blue .num { color: #0984e3; }
+
+  .verdict { display: flex; align-items: center; gap: 14px; background: #e8f8f0; border: 1.5px solid #00b894; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; }
+  .verdict .badge { background: #00b894; color: white; font-weight: 700; font-size: 13px; padding: 6px 14px; border-radius: 20px; white-space: nowrap; }
+  .verdict p { font-size: 13px; line-height: 1.6; color: #2d3436; }
+
+  .note { background: #fff8e7; border-left: 4px solid #fdcb6e; border-radius: 4px; padding: 12px 16px; font-size: 13px; line-height: 1.7; margin-bottom: 10px; }
+  .note.blue { background: #f0f8ff; border-color: #74b9ff; }
+  .note strong { color: #e17055; }
+
+  footer { text-align: center; font-size: 12px; color: #b2bec3; margin-top: 32px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <h1>Spike Test Report — AXSpike</h1>
+    <p>10 Juni 2026 &nbsp;|&nbsp; Apache JMeter 5.6.3 &nbsp;|&nbsp; Staging: api-gateway.ax-stg.lgq-stg.com</p>
+  </div>
+
+  <!-- 1. Konfigurasi -->
+  <div class="section">
+    <h2>1. Konfigurasi Test</h2>
+    <div class="info-grid">
+      <div class="info-card"><div class="label">Test Plan</div><div class="value">AXSpike.jmx</div></div>
+      <div class="info-card"><div class="label">Users (Threads)</div><div class="value">100</div></div>
+      <div class="info-card"><div class="label">Ramp-up (BURST)</div><div class="value" style="color:#e17055">60 detik</div></div>
+      <div class="info-card"><div class="label">Loop</div><div class="value">1x</div></div>
+      <div class="info-card"><div class="label">Durasi Aktual</div><div class="value">±2m 43s</div></div>
+      <div class="info-card"><div class="label">Skenario</div><div class="value" style="font-size:13px">Parallel + AXOtherOp</div></div>
+    </div>
+  </div>
+
+  <!-- 2. Ringkasan -->
+  <div class="section">
+    <h2>2. Ringkasan Hasil</h2>
+    <div class="summary-grid">
+      <div class="stat"><div class="num">4.401</div><div class="lbl">Total Requests</div></div>
+      <div class="stat green"><div class="num">0%</div><div class="lbl">Error Rate</div></div>
+      <div class="stat blue"><div class="num">27/s</div><div class="lbl">Throughput</div></div>
+      <div class="stat green"><div class="num">78 ms</div><div class="lbl">Avg Response</div></div>
+      <div class="stat"><div class="num">15.712 ms</div><div class="lbl">Max Response</div></div>
+    </div>
+  </div>
+
+  <!-- 3. Tabel Endpoint -->
+  <div class="section">
+    <h2>3. Hasil per Endpoint &nbsp;<span style="font-size:11px;font-weight:400;color:#636e72">satuan: ms | 100 samples per endpoint | semua 0% error</span></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Label</th>
+          <th>Samples</th><th>Err%</th><th>Min</th><th>Avg</th><th>P50</th><th>P90</th><th>P95</th><th>P99</th><th>Max</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="section-divider"><td colspan="10">Login</td></tr>
+        <tr><td>POST Login</td><td>100</td><td>0%</td><td>139</td><td class="warn">741</td><td>248</td><td class="warn">2.937</td><td class="warn">3.210</td><td class="warn">15.712</td><td class="warn">15.712</td></tr>
+
+        <tr class="section-divider"><td colspan="10">Phase 1 — HTTP Load Awal (1x per user)</td></tr>
+        <tr><td>GET List Translation (EN)</td><td>100</td><td>0%</td><td>109</td><td>217</td><td>134</td><td>395</td><td>405</td><td>3.155</td><td>3.155</td></tr>
+        <tr><td>GET List Translation (TH)</td><td>100</td><td>0%</td><td>47</td><td>90</td><td>64</td><td>190</td><td>196</td><td>260</td><td>260</td></tr>
+        <tr><td>GET Remind Me List</td><td>100</td><td>0%</td><td>26</td><td>47</td><td>32</td><td>98</td><td>109</td><td>182</td><td>182</td></tr>
+        <tr><td>GET Vehicle Image</td><td>100</td><td>0%</td><td>24</td><td>44</td><td>31</td><td>92</td><td>97</td><td>159</td><td>159</td></tr>
+        <tr><td>GET Customers Interested</td><td>100</td><td>0%</td><td>56</td><td>131</td><td>87</td><td>213</td><td>312</td><td>1.212</td><td>1.212</td></tr>
+        <tr><td>GET Vehicle Image Batch</td><td>100</td><td>0%</td><td>23</td><td>43</td><td>30</td><td>93</td><td>99</td><td>124</td><td>124</td></tr>
+        <tr><td>GET Vehicle Document</td><td>100</td><td>0%</td><td>24</td><td>45</td><td>34</td><td>95</td><td>99</td><td>108</td><td>108</td></tr>
+        <tr><td>GET Auction List</td><td>100</td><td>0%</td><td>24</td><td>44</td><td>31</td><td>95</td><td>98</td><td>160</td><td>160</td></tr>
+        <tr><td>GET Customer History Chat</td><td>100</td><td>0%</td><td>32</td><td>55</td><td>42</td><td>105</td><td>108</td><td>148</td><td>148</td></tr>
+        <tr><td>GET Membership Me</td><td>100</td><td>0%</td><td>26</td><td>48</td><td>33</td><td>96</td><td>103</td><td>114</td><td>114</td></tr>
+        <tr><td>GET Auction Notifications</td><td>100</td><td>0%</td><td>26</td><td>48</td><td>33</td><td>99</td><td>110</td><td>144</td><td>144</td></tr>
+        <tr><td>GET Terms and Conditions</td><td>100</td><td>0%</td><td>63</td><td>127</td><td>93</td><td>277</td><td>289</td><td>340</td><td>340</td></tr>
+        <tr><td>GET Auction Schedule (month)</td><td>100</td><td>0%</td><td>23</td><td>45</td><td>31</td><td>94</td><td>99</td><td>165</td><td>165</td></tr>
+        <tr><td>GET Auction Schedule (date filter)</td><td>100</td><td>0%</td><td>24</td><td>44</td><td>31</td><td>98</td><td>104</td><td>132</td><td>132</td></tr>
+        <tr><td>GET Catalog Membership (list)</td><td>100</td><td>0%</td><td>33</td><td>161</td><td>48</td><td>525</td><td>1.091</td><td>1.702</td><td>1.702</td></tr>
+        <tr><td>GET Catalog Membership (detail)</td><td>100</td><td>0%</td><td>34</td><td>109</td><td>45</td><td>186</td><td>414</td><td>1.766</td><td>1.766</td></tr>
+        <tr><td>GET Catalog Membership Location</td><td>100</td><td>0%</td><td>30</td><td>66</td><td>45</td><td>122</td><td>161</td><td>311</td><td>311</td></tr>
+        <tr><td>GET Catalog List (lots)</td><td>100</td><td>0%</td><td>39</td><td>61</td><td>49</td><td>110</td><td>114</td><td>141</td><td>141</td></tr>
+        <tr><td>GET Car Brands</td><td>100</td><td>0%</td><td>65</td><td>245</td><td>190</td><td>506</td><td>591</td><td>933</td><td>933</td></tr>
+
+        <tr class="section-divider"><td colspan="10">Phase 2 — WebSocket Bidding (1x per user)</td></tr>
+        <tr><td>GET Current Auction State</td><td>100</td><td>0%</td><td>36</td><td>59</td><td>48</td><td>108</td><td>121</td><td>143</td><td>143</td></tr>
+        <tr><td>WS Open Connection</td><td>100</td><td>0%</td><td>120</td><td>167</td><td>144</td><td>322</td><td>330</td><td>364</td><td>364</td></tr>
+        <tr><td>WS Read - EIO Open (0{...})</td><td>100</td><td>0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>WS Write - SIO Namespace Connect (40)</td><td>100</td><td>0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>2</td><td>2</td></tr>
+        <tr><td>WS Read - SIO Namespace Confirm (40)</td><td>100</td><td>0%</td><td>18</td><td>31</td><td>22</td><td>82</td><td>86</td><td>95</td><td>95</td></tr>
+        <tr><td>WS Write - Check Latest Vehicle (420)</td><td>100</td><td>0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>WS Read - Check Latest Vehicle (430)</td><td>100</td><td>0%</td><td>53</td><td>136</td><td>73</td><td>197</td><td>838</td><td>1.280</td><td>1.280</td></tr>
+        <tr><td>WS Write - Join Room (421)</td><td>100</td><td>0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>WS Read - Join Confirm (431)</td><td>100</td><td>0%</td><td>19</td><td>35</td><td>27</td><td>86</td><td>94</td><td>105</td><td>105</td></tr>
+        <tr><td>WS Write - theping (after join)</td><td>100</td><td>0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>WS Read - thepong (after join)</td><td>100</td><td>0%</td><td>0</td><td>31</td><td>23</td><td>86</td><td>89</td><td>127</td><td>127</td></tr>
+        <tr><td>WS Write - Check Latest (422)</td><td>100</td><td>0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>WS Read - Check Latest Response (432)</td><td>100</td><td>0%</td><td>0</td><td>253</td><td>232</td><td>412</td><td>579</td><td>1.803</td><td>1.803</td></tr>
+        <tr><td>WS Write - theping (before bid)</td><td>100</td><td>0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>WS Read - thepong (before bid)</td><td>100</td><td>0%</td><td>0</td><td>30</td><td>23</td><td>80</td><td>89</td><td>110</td><td>110</td></tr>
+        <tr><td>GET Bidding Validation</td><td>100</td><td>0%</td><td>24</td><td>45</td><td>31</td><td>95</td><td>98</td><td>121</td><td>121</td></tr>
+        <tr><td>GET Fresh Price (pre-bid)</td><td>100</td><td>0%</td><td>36</td><td>60</td><td>48</td><td>110</td><td>116</td><td>152</td><td>152</td></tr>
+        <tr><td>WS Write - Customer Bid (423)</td><td>100</td><td>0%</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+        <tr><td>WS Read - Broadcast 1 (bid-lock)</td><td>100</td><td>0%</td><td>0</td><td>16</td><td>19</td><td>35</td><td>51</td><td>87</td><td>87</td></tr>
+        <tr><td>WS Read - Broadcast 2 (bidding)</td><td>100</td><td>0%</td><td>0</td><td>52</td><td>28</td><td>122</td><td>130</td><td>178</td><td>178</td></tr>
+        <tr><td>WS Read - Broadcast 3 (bid-unlock)</td><td>100</td><td>0%</td><td>0</td><td>19</td><td>1</td><td>55</td><td>75</td><td>315</td><td>315</td></tr>
+        <tr><td>WS Read - Bid ACK (433)</td><td>100</td><td>0%</td><td>0</td><td>12</td><td>0</td><td>33</td><td>68</td><td>118</td><td>118</td></tr>
+        <tr><td>WS Read - Countdown broadcast</td><td>100</td><td>0%</td><td>0</td><td>81</td><td>26</td><td>68</td><td>95</td><td>3.390</td><td>3.390</td></tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4. Kesimpulan -->
+  <div class="section">
+    <h2>4. Kesimpulan</h2>
+
+    <div class="verdict">
+      <span class="badge">LULUS ✓</span>
+      <p>Seluruh <strong>44 endpoint</strong> berhasil dieksekusi dengan <strong>error rate 0%</strong> pada beban <strong>100 concurrent users dengan ramp-up 60 detik</strong> (spike) yang berjalan parallel dengan AXOtherOperation. Sistem terbukti tahan terhadap lonjakan trafik mendadak.</p>
+    </div>
+
+    <div class="note">
+      <strong>POST Login</strong> — avg 741ms, P90 2.937ms, Max 15.712ms. Login melambat signifikan saat 100 user masuk serentak dalam 60 detik. Wajar untuk kondisi spike, namun perlu diperhatikan jika terjadi re-login massal di produksi.
+    </div>
+
+    <div class="note blue">
+      <strong>Perbandingan vs Load Test (300s ramp-up):</strong> Meskipun ramp-up 5x lebih cepat, avg response hanya naik 2ms (76ms → 78ms) dan error rate tetap 0%. Ini menunjukkan sistem memiliki elastisitas yang baik terhadap lonjakan trafik mendadak.
+    </div>
+
+    <div class="note" style="background:#f0f8ff; border-color:#74b9ff;">
+      <strong>Catatan:</strong> Lanjutkan ke Stress Test untuk mengetahui batas maksimum sistem, dan Endurance Test untuk deteksi degradasi performa jangka panjang.
+    </div>
+  </div>
+
+  <footer>Spike Test Report — AXSpike &nbsp;|&nbsp; 10 Juni 2026 &nbsp;|&nbsp; Generated from JMeter JTL</footer>
+
+</div>
+</body>
+</html>
