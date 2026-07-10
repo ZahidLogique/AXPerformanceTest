@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="AX Auction Multi-Lane - 2 Room Full Flow Performance Test">
@@ -12,12 +12,12 @@
           <!-- ══ LANE A ══ -->
           <elementProp name="AUCTION_ID" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_ID</stringProp>
-            <stringProp name="Argument.value">f22958ab-90ca-469a-a703-96ccde2f593c</stringProp>
+            <stringProp name="Argument.value">0d145728-3bc3-4784-b3c8-7822ac193539</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="INVENTORY_ID" elementType="Argument">
             <stringProp name="Argument.name">INVENTORY_ID</stringProp>
-            <stringProp name="Argument.value">084999dc-cf9e-4cbe-96ef-480e16e94906</stringProp>
+            <stringProp name="Argument.value">ac7ef5cc-d4e8-44a3-a677-0e9c358444a4</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUCTION_LANE" elementType="Argument">
@@ -27,28 +27,28 @@
           </elementProp>
           <elementProp name="AUCTION_LOT" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_LOT</stringProp>
-            <stringProp name="Argument.value">1002</stringProp>
+            <stringProp name="Argument.value">1074</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <!-- ══ LANE B ══ -->
           <elementProp name="AUCTION_ID_B" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_ID_B</stringProp>
-            <stringProp name="Argument.value">e90ff3b2-dc18-4f54-b321-ab58039d5ee2</stringProp>
+            <stringProp name="Argument.value">1e0157a6-bd9c-42b5-a362-65f344f05a9f</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="INVENTORY_ID_B" elementType="Argument">
             <stringProp name="Argument.name">INVENTORY_ID_B</stringProp>
-            <stringProp name="Argument.value">784d675b-35e2-4bb5-be83-7a4390f04390</stringProp>
+            <stringProp name="Argument.value">df19dea0-9f2e-4680-af5c-c61ab0a28309</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUCTION_LANE_B" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_LANE_B</stringProp>
-            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.value">2</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUCTION_LOT_B" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_LOT_B</stringProp>
-            <stringProp name="Argument.value">1010</stringProp>
+            <stringProp name="Argument.value">2076</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <!-- USER_ID: diisi otomatis dari JWT decode di Phase 0 Login -->
@@ -65,18 +65,18 @@
           </elementProp>
           <elementProp name="SELLER_ID" elementType="Argument">
             <stringProp name="Argument.name">SELLER_ID</stringProp>
-            <stringProp name="Argument.value">90315450-4878-4e0b-9168-4dcd27888afe</stringProp>
+            <stringProp name="Argument.value">23a21638-c5c8-4d0a-ad0a-6d2b7f976e08</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <!-- ROOM_ID = AUCTION_ID + AUCTION_LANE -->
           <elementProp name="ROOM_ID" elementType="Argument">
             <stringProp name="Argument.name">ROOM_ID</stringProp>
-            <stringProp name="Argument.value">f22958ab-90ca-469a-a703-96ccde2f593c1</stringProp>
+            <stringProp name="Argument.value">0d145728-3bc3-4784-b3c8-7822ac1935391</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="ROOM_ID_B" elementType="Argument">
             <stringProp name="Argument.name">ROOM_ID_B</stringProp>
-            <stringProp name="Argument.value">e90ff3b2-dc18-4f54-b321-ab58039d5ee21</stringProp>
+            <stringProp name="Argument.value">1e0157a6-bd9c-42b5-a362-65f344f05a9f2</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="INCREMENT" elementType="Argument">
@@ -119,12 +119,12 @@
           <!-- AUCTION_DATE / MONTH / YEAR: digunakan di Phase 1 schedule & catalog -->
           <elementProp name="AUCTION_DATE" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_DATE</stringProp>
-            <stringProp name="Argument.value">2026-06-29</stringProp>
+            <stringProp name="Argument.value">2026-07-08</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUCTION_MONTH" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_MONTH</stringProp>
-            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.value">7</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUCTION_YEAR" elementType="Argument">
@@ -1102,6 +1102,13 @@ if (token != null &amp;&amp; token != "TOKEN_NOT_FOUND" &amp;&amp; token.contain
         <!--  Event: 42["customer-bidding", {headers, payload}]         -->
         <!-- ═══════════════════════════════════════════════════════════ -->
 
+        <!-- Think time antara bid cycle — simulasi user menunggu sebelum mulai cycle berikutnya -->
+        <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Think Time - Between Bid Cycles (2.5s ± 1.5s)" enabled="true">
+          <stringProp name="ConstantTimer.delay">2500</stringProp>
+          <stringProp name="RandomTimer.range">1500.0</stringProp>
+        </GaussianRandomTimer>
+        <hashTree/>
+
         <!-- STEP 2a: Get current auction state — ambil last bid ID dan harga terkini -->
         <!-- Entry pertama di response = bid terbaru untuk lot ini                    -->
         <!-- Extract: CURRENT_PRICE (last_price[0]) dan PARENT_BID_ID (_id[0])       -->
@@ -1691,6 +1698,14 @@ log.info("CURRENT_PRICE_B: " + lastPrice)
         <!-- ══════════════════════════════════════════════════════ -->
         <!-- BID FLOW LANE A                                      -->
         <!-- ══════════════════════════════════════════════════════ -->
+
+        <!-- Think time sebelum bid — simulasi user mempertimbangkan harga sebelum submit bid -->
+        <GaussianRandomTimer guiclass="GaussianRandomTimerGui" testclass="GaussianRandomTimer" testname="Think Time - Before Bid Decision (1s ± 0.5s)" enabled="true">
+          <stringProp name="ConstantTimer.delay">1000</stringProp>
+          <stringProp name="RandomTimer.range">500.0</stringProp>
+        </GaussianRandomTimer>
+        <hashTree/>
+
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="2i. GET Bidding Validation (Lane A)" enabled="true">
           <stringProp name="HTTPSampler.domain">${BASE_URL}</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>

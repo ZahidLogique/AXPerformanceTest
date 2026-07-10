@@ -16,7 +16,7 @@
           </elementProp>
           <elementProp name="AUCTION_ID" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_ID</stringProp>
-            <stringProp name="Argument.value">c2aa752c-71df-4685-919c-001e4b5668c0</stringProp>
+            <stringProp name="Argument.value">0d145728-3bc3-4784-b3c8-7822ac193539</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -101,7 +101,7 @@ if (!found) log.warn("XSRF-TOKEN not found in CookieManager after GET")
               <elementProp name="username" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.name">username</stringProp>
-                <stringProp name="Argument.value">admin</stringProp>
+                <stringProp name="Argument.value">lgq.admin</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -186,7 +186,7 @@ props.put("ADMIN_LOGIN_TIME", System.currentTimeMillis())
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{"username":"fakhruzzahid@logique.co.id","password":"NH7jighr","captcha_key":"test","remember_me":false}</stringProp>
+                <stringProp name="Argument.value">{"username":"qalogique@gmail.com","password":"Qwer1234!","captcha_key":"test","remember_me":false}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -257,7 +257,7 @@ if (token) {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{"username":"alvin@logique.co.id","password":"Qwer1234!","captcha_key":"test","remember_me":false}</stringProp>
+                <stringProp name="Argument.value">{"username":"alvinconductor@logique.co.id","password":"Qwer1234!","captcha_key":"test","remember_me":false}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -337,7 +337,7 @@ if (token &amp;&amp; token != "TOKEN_NOT_FOUND") {
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{"username":"zahidconductor@gmail.com","password":"P@ssword123","role":"Observer","captcha_key":"test"}</stringProp>
+                <stringProp name="Argument.value">{"username":"ZahidConductor","password":"Password123!","role":"Observer","captcha_key":"test"}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -473,7 +473,7 @@ try {
     def m = (body1 =~ /name="_token"\s+value="([^"]+)"/)
     if (!m) { log.error("Re-login: CSRF not found"); return }
     def csrf = m[0][1]
-    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
+    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=lgq.admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
     def post = new HttpPost(base + "/")
     post.setHeader("Content-Type", "application/x-www-form-urlencoded")
     post.setHeader("User-Agent", "Mozilla/5.0")
@@ -848,7 +848,7 @@ try {
     def m = (body1 =~ /name="_token"\s+value="([^"]+)"/)
     if (!m) { log.error("Re-login: CSRF not found"); return }
     def csrf = m[0][1]
-    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
+    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=lgq.admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
     def post = new HttpPost(base + "/")
     post.setHeader("Content-Type", "application/x-www-form-urlencoded")
     post.setHeader("User-Agent", "Mozilla/5.0")
@@ -920,7 +920,7 @@ try {
               <elementProp name="membership_id" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.name">membership_id</stringProp>
-                <stringProp name="Argument.value">["b877a1bf-d610-4298-b861-cde00e82631d"]</stringProp>
+                <stringProp name="Argument.value">["a140cfc4-b0ee-404f-b076-7941661ec4de"]</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">true</boolProp>
               </elementProp>
@@ -1226,7 +1226,7 @@ try {
             </elementProp>
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">Referer</stringProp>
-              <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com/en/register-payment/payment/show-payment/c2aa752c-71df-4685-919c-001e4b5668c0/23a21638-c5c8-4d0a-ad0a-6d2b7f976e08</stringProp>
+              <stringProp name="Header.value">https://backoffice.ax-stg.lgq-stg.com/en/register-payment/payment/show-payment/0d145728-3bc3-4784-b3c8-7822ac193539/23a21638-c5c8-4d0a-ad0a-6d2b7f976e08</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -1257,7 +1257,7 @@ try {
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Show Payment Detail" enabled="true">
           <stringProp name="HTTPSampler.domain">backoffice.ax-stg.lgq-stg.com</stringProp>
           <stringProp name="HTTPSampler.protocol">https</stringProp>
-          <stringProp name="HTTPSampler.path">/en/register-payment/payment/show-payment/c2aa752c-71df-4685-919c-001e4b5668c0/23a21638-c5c8-4d0a-ad0a-6d2b7f976e08</stringProp>
+          <stringProp name="HTTPSampler.path">/en/register-payment/payment/show-payment/0d145728-3bc3-4784-b3c8-7822ac193539/23a21638-c5c8-4d0a-ad0a-6d2b7f976e08</stringProp>
           <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
           <stringProp name="HTTPSampler.method">GET</stringProp>
           <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
@@ -1331,7 +1331,7 @@ vars.put("LIST_PAYMENT_BILL_JSON", billJson)
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{"auction_id":"c2aa752c-71df-4685-919c-001e4b5668c0","membership_id":"23a21638-c5c8-4d0a-ad0a-6d2b7f976e08","receipt_date":"${__time(yyyy-MM-dd,)}","payment_method":[{"deposit_id":null,"campaign_id":null,"method_type":1,"method_bank_id":"3866f1d8-6da3-4b18-9eaf-f6fbddce0391","amount":20000,"receive_date":"${__time(yyyy-MM-dd,)}","sort_number":1,"has_used":false}],"list_payment_bills":[{"auction_car_id":"${AUCTION_CAR_ID}","sold_price":100000,"sold_price_vat":7000,"service_fee":25600,"service_fee_vat":1792,"service_fee_wht":768,"net_seller_fee":0,"net_seller_fee_vat":0,"net_seller_fee_wht":0,"sold_price_10":10700,"total_amount_vehicle":107000,"total_amount_fee":26624,"receive_amount_vehicle":0,"receive_amount_fee":20000,"list_sort_number":[1]}]}</stringProp>
+                <stringProp name="Argument.value">{"auction_id":"0d145728-3bc3-4784-b3c8-7822ac193539","membership_id":"23a21638-c5c8-4d0a-ad0a-6d2b7f976e08","receipt_date":"${__time(yyyy-MM-dd,)}","payment_method":[{"deposit_id":null,"campaign_id":null,"method_type":1,"method_bank_id":"3866f1d8-6da3-4b18-9eaf-f6fbddce0391","amount":20000,"receive_date":"${__time(yyyy-MM-dd,)}","sort_number":1,"has_used":false}],"list_payment_bills":[{"auction_car_id":"${AUCTION_CAR_ID}","sold_price":100000,"sold_price_vat":7000,"service_fee":25600,"service_fee_vat":1792,"service_fee_wht":768,"net_seller_fee":0,"net_seller_fee_vat":0,"net_seller_fee_wht":0,"sold_price_10":10700,"total_amount_vehicle":107000,"total_amount_fee":26624,"receive_amount_vehicle":0,"receive_amount_fee":20000,"list_sort_number":[1]}]}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
                 <boolProp name="HTTPArgument.use_equals">false</boolProp>
                 <stringProp name="Argument.name"></stringProp>
@@ -4168,7 +4168,7 @@ try {
     def m = (body1 =~ /name="_token"\s+value="([^"]+)"/)
     if (!m) { log.error("Re-login: CSRF not found"); return }
     def csrf = m[0][1]
-    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
+    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=lgq.admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
     def post = new HttpPost(base + "/")
     post.setHeader("Content-Type", "application/x-www-form-urlencoded")
     post.setHeader("User-Agent", "Mozilla/5.0")
@@ -4857,7 +4857,7 @@ try {
     def m = (body1 =~ /name="_token"\s+value="([^"]+)"/)
     if (!m) { log.error("Re-login: CSRF not found"); return }
     def csrf = m[0][1]
-    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
+    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=lgq.admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
     def post = new HttpPost(base + "/")
     post.setHeader("Content-Type", "application/x-www-form-urlencoded")
     post.setHeader("User-Agent", "Mozilla/5.0")
@@ -6292,7 +6292,7 @@ try {
     def m = (body1 =~ /name="_token"\s+value="([^"]+)"/)
     if (!m) { log.error("Re-login: CSRF not found"); return }
     def csrf = m[0][1]
-    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
+    def postData = "_token=" + URLEncoder.encode(csrf, "UTF-8") + "&amp;username=lgq.admin&amp;password=" + URLEncoder.encode("Qwer1234!", "UTF-8") + "&amp;language=en"
     def post = new HttpPost(base + "/")
     post.setHeader("Content-Type", "application/x-www-form-urlencoded")
     post.setHeader("User-Agent", "Mozilla/5.0")
@@ -6336,7 +6336,7 @@ try {
               <elementProp name="membership_id" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
                 <stringProp name="Argument.name">membership_id</stringProp>
-                <stringProp name="Argument.value">["b877a1bf-d610-4298-b861-cde00e82631d"]</stringProp>
+                <stringProp name="Argument.value">["a140cfc4-b0ee-404f-b076-7941661ec4de"]</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
               <elementProp name="brand_id" elementType="HTTPArgument">

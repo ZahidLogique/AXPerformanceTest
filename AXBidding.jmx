@@ -11,12 +11,12 @@
           </elementProp>
           <elementProp name="AUCTION_ID" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_ID</stringProp>
-            <stringProp name="Argument.value">c2aa752c-71df-4685-919c-001e4b5668c0</stringProp>
+            <stringProp name="Argument.value">0d145728-3bc3-4784-b3c8-7822ac193539</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="INVENTORY_ID" elementType="Argument">
             <stringProp name="Argument.name">INVENTORY_ID</stringProp>
-            <stringProp name="Argument.value">46133def-fe4b-4416-9b57-82a7d3fa3be5</stringProp>
+            <stringProp name="Argument.value">d616d513-7e77-4bce-9ed0-e425e8dbc8ea</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUCTION_LANE" elementType="Argument">
@@ -26,7 +26,7 @@
           </elementProp>
           <elementProp name="AUCTION_LOT" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_LOT</stringProp>
-            <stringProp name="Argument.value">1018</stringProp>
+            <stringProp name="Argument.value">1014</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <!-- USER_ID: diisi otomatis dari JWT decode di Phase 0 Login -->
@@ -43,13 +43,13 @@
           </elementProp>
           <elementProp name="SELLER_ID" elementType="Argument">
             <stringProp name="Argument.name">SELLER_ID</stringProp>
-            <stringProp name="Argument.value">90315450-4878-4e0b-9168-4dcd27888afe</stringProp>
+            <stringProp name="Argument.value">23a21638-c5c8-4d0a-ad0a-6d2b7f976e08</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <!-- ROOM_ID = AUCTION_ID + AUCTION_LANE (contoh: c2aa752c-...-001e4b5668c0 + 1) -->
           <elementProp name="ROOM_ID" elementType="Argument">
             <stringProp name="Argument.name">ROOM_ID</stringProp>
-            <stringProp name="Argument.value">c2aa752c-71df-4685-919c-001e4b5668c01</stringProp>
+            <stringProp name="Argument.value">0d145728-3bc3-4784-b3c8-7822ac1935391</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="INCREMENT" elementType="Argument">
@@ -92,12 +92,12 @@
           <!-- AUCTION_DATE / MONTH / YEAR: digunakan di Phase 1 schedule & catalog -->
           <elementProp name="AUCTION_DATE" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_DATE</stringProp>
-            <stringProp name="Argument.value">2026-05-26</stringProp>
+            <stringProp name="Argument.value">2026-07-06</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUCTION_MONTH" elementType="Argument">
             <stringProp name="Argument.name">AUCTION_MONTH</stringProp>
-            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.value">7</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="AUCTION_YEAR" elementType="Argument">
